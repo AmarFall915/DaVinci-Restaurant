@@ -173,9 +173,7 @@
     .delay-200 { transition-delay: 0.16s; }
     .delay-300 { transition-delay: 0.24s; }
 
-    /* =========================================================================
-       CARTES GASTRONOMIQUES HAUT DE GAMME AVEC PHOTOS
-       ========================================================================= */
+    /* Cartes gastronomiques */
     .gastro-card {
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       border: 1px solid rgba(216, 171, 102, 0.15);
@@ -667,7 +665,7 @@
   </footer>
 
   <!-- ========================================================================= -->
-  <!-- 1. TIROIR MODAL : CARTE GASTRONOMIQUE COMPLÈTE AVEC PHOTOS & CATÉGORIES -->
+  <!-- 1. TIROIR MODAL : CARTE GASTRONOMIQUE COMPLÈTE AVEC PHOTOS VÉRIFIÉES -->
   <!-- ========================================================================= -->
   <div id="menu-overlay" onclick="closeAllModals()" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden opacity-0 transition-opacity duration-300"></div>
 
@@ -709,7 +707,7 @@
       </button>
     </div>
 
-    <!-- Contenu des Plats avec affichage en cartes photos -->
+    <!-- Contenu des Plats avec photos vérifiées -->
     <div class="p-6 overflow-y-auto flex-1 custom-scroll space-y-10">
 
       <!-- ================= CATÉGORIE : PLATS & ENTRÉES ================= -->
@@ -1031,9 +1029,12 @@
               </div>
             </div>
 
+            <!-- BOLOGNAISE CORRIGÉE -->
             <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
               <div class="h-44 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1621996346565-e3d5d6281724?auto=format&fit=crop&w=600&q=80" alt="Bolognaise" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?auto=format&fit=crop&w=600&q=80" 
+                     onerror="this.src='https://images.unsplash.com/photo-1621996346565-e3d5d6281724?auto=format&fit=crop&w=600&q=80'"
+                     alt="Bolognaise" class="w-full h-full object-cover">
                 <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">5 000 F</span>
               </div>
               <div class="p-4 flex-1 flex flex-col justify-between">
@@ -1241,9 +1242,12 @@
               </div>
             </div>
 
+            <!-- WINGS TERIYAKI CORRIGÉS -->
             <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
               <div class="h-44 overflow-hidden relative">
-                <img src="https://images.unsplash.com/photo-1527477378696-6e4b47c430e7?auto=format&fit=crop&w=600&q=80" alt="Wings teriyaki" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=600&q=80" 
+                     onerror="this.src='https://images.unsplash.com/photo-1527477378696-6e4b47c430e7?auto=format&fit=crop&w=600&q=80'"
+                     alt="Wings teriyaki" class="w-full h-full object-cover">
                 <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">3 000 / 6 000 F</span>
               </div>
               <div class="p-4 flex-1 flex flex-col justify-between">
