@@ -400,7 +400,8 @@
   </section>
 
   <!-- CONTACT & LOCALISATION -->
-  <section id="contact" class="py-20 bg-dark-900">
+  <!-- CONTACT & LOCALISATION -->
+  <section id="contact" class="py-20 bg-dark-900 border-t border-white/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
@@ -414,7 +415,7 @@
               </div>
               <div>
                 <h4 class="text-white font-medium">Adresse</h4>
-                <p class="text-sm text-gray-400">PPX7+7P, Rufisque, Dakar, Sénégal</p>
+                <p class="text-sm text-gray-400">DaVinci Restaurant Lounge Bar, Rufisque (Sénégal)</p>
               </div>
             </div>
 
@@ -440,56 +441,32 @@
             </div>
           </div>
 
+          <!-- BOUTONS ACTIONS AVEC VOTRE VRAI LIEN GOOGLE MAPS -->
           <div class="mt-8 flex flex-wrap gap-4">
-            <a href="https://maps.google.com/?q=PPX7%2B7P,+Rufisque" target="_blank" class="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-dark-950 font-semibold px-6 py-3 rounded-full text-xs uppercase tracking-wider transition">
-              <i class="fa-solid fa-location-arrow"></i> Google Maps
+            <a href="https://maps.app.goo.gl/tGwfVDysir6upeB3A" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-gold-500 to-gold-400 hover:from-gold-400 hover:to-gold-500 text-dark-950 font-bold px-6 py-3 rounded-full text-xs uppercase tracking-wider transition shadow-lg shadow-gold-500/20">
+              <i class="fa-solid fa-location-arrow"></i> Ouvrir l'Itinéraire Maps
             </a>
-            <a href="https://www.instagram.com/davinci.almadies2/" target="_blank" class="inline-flex items-center gap-2 bg-dark-800 hover:bg-dark-700 text-white font-medium px-6 py-3 rounded-full text-xs uppercase tracking-wider transition">
+            <a href="https://www.instagram.com/davinci.almadies2/" target="_blank" class="inline-flex items-center gap-2 bg-dark-800 hover:bg-dark-700 text-white font-medium px-6 py-3 rounded-full text-xs uppercase tracking-wider transition border border-white/10">
               <i class="fa-brands fa-instagram text-gold-400"></i> @davinci.almadies2
             </a>
           </div>
         </div>
 
-        <div class="h-80 sm:h-96 w-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+        <!-- CARTE GOOGLE MAPS DIRECTE -->
+        <div class="h-80 sm:h-96 w-full rounded-2xl overflow-hidden border border-gold-500/20 shadow-2xl">
           <iframe 
-            src="https://maps.google.com/maps?q=PPX7%2B7P,%20Rufisque&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+            src="https://maps.google.com/maps?q=DaVinci%20Restaurant%20Lounge%20Bar%2C%20Rufisque&t=&z=15&ie=UTF8&iwloc=&output=embed" 
             width="100%" 
             height="100%" 
             style="border:0;" 
             allowfullscreen="" 
-            loading="lazy">
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
           </iframe>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- FOOTER -->
-  <footer class="bg-dark-950 py-12 border-t border-white/5 text-center text-xs text-gray-500">
-    <div class="max-w-7xl mx-auto px-4 space-y-4">
-      <div class="font-serif text-xl tracking-widest text-gold-400 uppercase">DaVinci</div>
-      <p>&copy; 2026 DaVinci Restaurant Lounge Bar &bull; Rufisque, Sénégal.</p>
-    </div>
-  </footer>
-
-  <!-- ========================================================================= -->
-  <!-- MODAL DE LA CARTE AVEC EFFETS VISUELS LUXE & RECHERCHE INSTANTANÉE -->
-  <!-- ========================================================================= -->
-  <div id="menu-overlay" onclick="closeMenuModal()" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden opacity-0 transition-opacity duration-300"></div>
-
-  <div id="menu-modal" class="fixed top-0 right-0 w-full sm:w-[580px] md:w-[650px] h-full bg-dark-900 border-l border-gold-500/20 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-hidden">
-    
-    <!-- En-tête avec titre doré et barre de recherche -->
-    <div class="p-6 border-b border-white/10 bg-dark-950 shrink-0 space-y-4">
-      <div class="flex items-center justify-between">
-        <div>
-          <span class="text-[10px] uppercase tracking-widest text-gold-400 font-bold bg-gold-500/10 px-2 py-0.5 rounded border border-gold-500/20">Menu Officiel</span>
-          <h3 class="text-2xl font-serif font-bold text-white uppercase tracking-wider mt-1">La Carte Gastronomique</h3>
-        </div>
-        <button onclick="closeMenuModal()" class="w-10 h-10 rounded-full bg-dark-850 border border-white/10 text-gray-400 hover:text-white hover:border-gold-400 flex items-center justify-center text-xl transition">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
 
       <!-- Barre de recherche instantanée esthétique -->
       <div class="relative">
