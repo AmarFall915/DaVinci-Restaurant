@@ -40,7 +40,7 @@
 
   <style>
     /* =========================================================================
-       ANIMATIONS ET EFFETS ÉTINCELANTS
+       ANIMATIONS DE SCINTILLEMENT DORÉ SUR LES BOUTONS
        ========================================================================= */
     @keyframes shimmerSwipe {
       0% { transform: translateX(-150%) rotate(25deg); }
@@ -112,6 +112,7 @@
       transform: translateY(-2px);
     }
 
+    /* Cartes verticales immersives */
     .soul-card {
       transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -120,7 +121,14 @@
       border-color: rgba(216, 171, 102, 0.6);
       box-shadow: 0 20px 40px -15px rgba(0,0,0,0.9), 0 0 30px -5px rgba(216, 171, 102, 0.25);
     }
+    .soul-card img {
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .soul-card:hover img {
+      transform: scale(1.08);
+    }
 
+    /* Tiroirs / Modals */
     .drawer-modal {
       transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     }
@@ -139,33 +147,33 @@
   <a href="https://wa.me/221773090000?text=Bonjour%20DaVinci%2C%20je%20souhaite%20r%C3%A9server%20une%20table%20ou%20avoir%20des%20informations." 
      target="_blank" 
      class="fixed bottom-6 right-6 z-40 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 active:scale-95 transition-transform duration-300 drop-shadow-[0_10px_20px_rgba(37,211,102,0.4)]"
-     title="WhatsApp DaVinci">
+     title="Discuter sur WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
-  <!-- NAVBAR STYLE HAUTE GASTRONOMIE (100% FRANÇAIS) -->
+  <!-- BARRE DE NAVIGATION SUPÉRIEURE -->
   <nav class="fixed w-full z-40 bg-aurelia-black/90 backdrop-blur-xl border-b border-aurelia-border transition-all duration-300">
     <div class="max-w-7xl mx-auto px-6 lg:px-12 h-22 flex items-center justify-between">
       
-      <!-- LOGO -->
+      <!-- LOGO DAVINCI -->
       <a href="#" class="flex flex-col text-left">
         <span class="text-2xl sm:text-3xl font-serif tracking-[0.25em] text-white uppercase font-normal leading-none">DaVinci</span>
-        <span class="text-[8px] tracking-[0.35em] text-aurelia-gold uppercase mt-1">Restaurant &bull; Lounge Bar</span>
+        <span class="text-[8px] tracking-[0.35em] text-aurelia-gold uppercase mt-1">Restaurant &bull; Bar Lounge</span>
       </a>
 
-      <!-- Menu Liens -->
+      <!-- Liens de navigation -->
       <div class="hidden lg:flex items-center space-x-9 text-[11px] uppercase tracking-[0.22em] text-gray-300 font-light">
         <a href="#home" class="text-aurelia-lightGold border-b border-aurelia-lightGold pb-0.5">Accueil</a>
         <a href="#story" class="hover:text-aurelia-lightGold transition">Notre Histoire</a>
         <button onclick="openMenuModal()" class="hover:text-aurelia-lightGold transition flex items-center gap-1.5">
           La Carte <i class="fa-solid fa-chevron-down text-[7px] text-aurelia-gold"></i>
         </button>
-        <a href="#specialties" class="hover:text-aurelia-lightGold transition">Plats Phares</a>
-        <a href="#secure" class="hover:text-aurelia-lightGold transition">Réservations</a>
+        <a href="#specialties" class="hover:text-aurelia-lightGold transition">Plats Signatures</a>
+        <a href="#secure" class="hover:text-aurelia-lightGold transition">Réservation</a>
         <a href="#contact" class="hover:text-aurelia-lightGold transition">Contact</a>
       </div>
 
-      <!-- Actions Droite avec bouton scintillant -->
+      <!-- Actions Droite -->
       <div class="flex items-center space-x-3.5">
         <a href="https://www.instagram.com/davinci.almadies2/" target="_blank" class="w-9 h-9 rounded-full border border-aurelia-border flex items-center justify-center text-aurelia-lightGold hover:border-aurelia-gold transition" title="@davinci.almadies2">
           <i class="fa-brands fa-instagram text-sm"></i>
@@ -184,9 +192,10 @@
   </nav>
 
   <!-- ========================================================================= -->
-  <!-- HERO SECTION : SAVOUREZ L'INSTANT (TRADUIT EN FRANÇAIS) -->
+  <!-- HERO SECTION : SAVOUREZ L'INSTANT -->
   <!-- ========================================================================= -->
   <header id="home" class="relative min-h-[96vh] flex items-center pt-24 pb-16 overflow-hidden">
+    <!-- Image de fond gastronomique sombre -->
     <div class="absolute inset-0 z-0">
       <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1920&q=80" 
            alt="Haute Gastronomie DaVinci" 
@@ -202,15 +211,15 @@
           Haute Gastronomie &bull; Expérience d'Exception
         </span>
         
-        <!-- Grand titre en français -->
+        <!-- Grand titre traduit -->
         <h1 class="text-5xl sm:text-7xl md:text-8xl font-serif text-white leading-[0.95] tracking-tight mb-6 font-normal">
           SAVOUREZ <br>
-          CHAQUE <br>
-          <span class="italic font-serif text-aurelia-lightGold drop-shadow-[0_0_15px_rgba(216,171,102,0.4)]">INSTANT.</span>
+          L'INSTANT <br>
+          <span class="italic font-serif text-aurelia-lightGold drop-shadow-[0_0_15px_rgba(216,171,102,0.4)]">PRÉSENT.</span>
         </h1>
 
         <p class="text-gray-300 text-xs sm:text-sm font-light leading-relaxed mb-10 max-w-md">
-          Bien plus qu'un repas — une véritable émotion. Au DaVinci Rufisque, nous célébrons l'art culinaire d'exception avec des produits nobles, des marinades artisanales et une atmosphère feutrée.
+          Bien plus qu'un repas — une véritable émotion. Au DaVinci Rufisque, nous célébrons l'art culinaire d'exception avec des produits nobles, des cuissons au feu de bois et une atmosphère lounge feutrée.
         </p>
 
         <!-- Boutons Scintillants en français -->
@@ -219,7 +228,7 @@
             <span class="w-6 h-6 rounded-full bg-aurelia-black/20 flex items-center justify-center text-[10px]">
               <i class="fa-solid fa-arrow-right"></i>
             </span>
-            <span>Découvrir la Carte</span>
+            <span>Explorer la Carte</span>
           </button>
 
           <button onclick="openBookingModal()" class="btn-outline-sparkle px-7 py-3.5 rounded-sm text-xs uppercase tracking-[0.2em] font-medium">
@@ -232,139 +241,68 @@
   </header>
 
   <!-- ========================================================================= -->
-  <!-- SECTION TRIPTYQUE AVEC LES 3 VIGNETTES TAPAS + LES 3 VIGNETTES GRILLADES -->
+  <!-- SECTION TRIPTYQUE IMMERSIF (3 GRANDS VISUELS SOMBRES) -->
   <!-- ========================================================================= -->
   <section class="py-24 bg-aurelia-charcoal border-y border-aurelia-border">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
       
       <div class="text-center max-w-xl mx-auto mb-16">
         <span class="text-[10px] uppercase tracking-[0.35em] text-aurelia-gold font-medium mb-2 block">
-          L'Expérience Culinaire
+          L'Expérience
         </span>
         <h2 class="text-3xl sm:text-5xl font-serif text-white font-normal mb-3">
           Trois Univers Singuliers
         </h2>
         <p class="text-xs text-gray-400 font-light leading-relaxed">
-          Chaque détail a été pensé pour vous faire vivre une escapade sensorielle inoubliable au DaVinci.
+          Chaque détail a été pensé pour vous faire vivre une escapade sensorielle inoubliable au cœur de Rufisque.
         </p>
       </div>
 
+      <!-- Grille des 3 colonnes verticales -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        <!-- CARTE 1 : TAPAS AVEC 3 VIGNETTES (FATAYA, NEMS, BROCHETTES) -->
-        <div onclick="openMenuModal('afterwork')" class="soul-card cursor-pointer bg-aurelia-card rounded-md overflow-hidden border border-white/5 p-6 flex flex-col justify-between min-h-[470px] relative group">
-          <div class="absolute inset-0 bg-gradient-to-b from-aurelia-charcoal via-aurelia-black to-aurelia-black"></div>
+        <!-- Carte 1 : Tapas -->
+        <div onclick="openMenuModal('afterwork')" class="soul-card cursor-pointer bg-aurelia-card rounded-md overflow-hidden border border-white/5 p-6 flex flex-col justify-between h-[450px] relative group">
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80" 
+               alt="Tapas & Entrées" 
+               class="absolute inset-0 w-full h-full object-cover filter brightness-[0.4] contrast-125">
+          <div class="absolute inset-0 bg-gradient-to-t from-aurelia-black via-aurelia-black/40 to-transparent"></div>
           
-          <div class="relative z-10 flex items-center justify-between">
-            <span class="text-[9px] uppercase tracking-[0.25em] text-aurelia-lightGold font-semibold">Tapas & Amuse-bouches</span>
-            <span class="text-[9px] uppercase tracking-[0.25em] text-aurelia-lightGold bg-black/60 px-2 py-0.5 rounded border border-aurelia-border">01</span>
+          <div class="relative z-10 text-right">
+            <span class="text-[9px] uppercase tracking-[0.25em] text-aurelia-lightGold bg-black/60 px-2.5 py-1 rounded border border-aurelia-border">01</span>
           </div>
 
-          <!-- Les 3 vignettes Tapas -->
-          <div class="relative z-10 grid grid-cols-3 gap-2.5 my-4">
-            <!-- Fataya -->
-            <div class="group/item text-center">
-              <div class="h-24 sm:h-28 rounded overflow-hidden border border-white/10 mb-2 relative bg-black">
-                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=400&q=80" 
-                     alt="Fatayas croustillants" 
-                     class="w-full h-full object-cover group-hover/item:scale-110 transition-transform duration-500">
-                <span class="absolute bottom-1 right-1 text-[8px] bg-black/80 text-aurelia-lightGold px-1 rounded font-bold">6 pcs</span>
-              </div>
-              <span class="text-[11px] font-serif text-white block font-medium">Fatayas</span>
-              <span class="text-[10px] text-aurelia-lightGold font-bold">3 000 F</span>
-            </div>
-
-            <!-- Nems -->
-            <div class="group/item text-center">
-              <div class="h-24 sm:h-28 rounded overflow-hidden border border-white/10 mb-2 relative bg-black">
-                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80" 
-                     alt="Nems dorés" 
-                     class="w-full h-full object-cover group-hover/item:scale-110 transition-transform duration-500">
-                <span class="absolute bottom-1 right-1 text-[8px] bg-black/80 text-aurelia-lightGold px-1 rounded font-bold">6 pcs</span>
-              </div>
-              <span class="text-[11px] font-serif text-white block font-medium">Nems</span>
-              <span class="text-[10px] text-aurelia-lightGold font-bold">3 000 F</span>
-            </div>
-
-            <!-- Mini-brochettes -->
-            <div class="group/item text-center">
-              <div class="h-24 sm:h-28 rounded overflow-hidden border border-white/10 mb-2 relative bg-black">
-                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=400&q=80" 
-                     alt="Mini brochettes marinées" 
-                     class="w-full h-full object-cover group-hover/item:scale-110 transition-transform duration-500">
-                <span class="absolute bottom-1 right-1 text-[8px] bg-black/80 text-aurelia-lightGold px-1 rounded font-bold">12 pcs</span>
-              </div>
-              <span class="text-[11px] font-serif text-white block font-medium">Brochettes</span>
-              <span class="text-[10px] text-aurelia-lightGold font-bold">6 000 F</span>
-            </div>
-          </div>
-
-          <div class="relative z-10 text-center pt-2 border-t border-white/5">
-            <h3 class="text-xl font-serif text-white uppercase tracking-wider mb-1">Nos Tapas & Planches</h3>
+          <div class="relative z-10 text-center">
+            <h3 class="text-2xl font-serif text-white uppercase tracking-wider mb-1">Nos Tapas d'Exception</h3>
+            <p class="text-[11px] text-gray-300 font-light leading-relaxed mb-4">Fatayas croustillants, nems faits maison, mini-brochettes et tapas à partager.</p>
             <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-aurelia-lightGold group-hover:underline">
-              Commander au bar &rarr;
+              Voir la sélection &rarr;
             </span>
           </div>
         </div>
 
-        <!-- CARTE 2 : EXPLOSION DE SAVEURS AVEC 3 VIGNETTES (POISSON BRAISÉ, VIANDE AU CHARBON, GAMBAS) -->
-        <div onclick="openMenuModal('plats')" class="soul-card cursor-pointer bg-aurelia-card rounded-md overflow-hidden border border-white/5 p-6 flex flex-col justify-between min-h-[470px] relative group">
-          <div class="absolute inset-0 bg-gradient-to-b from-aurelia-charcoal via-aurelia-black to-aurelia-black"></div>
+        <!-- Carte 2 : Poissons & Braisés -->
+        <div onclick="openMenuModal('plats')" class="soul-card cursor-pointer bg-aurelia-card rounded-md overflow-hidden border border-white/5 p-6 flex flex-col justify-between h-[450px] relative group">
+          <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80" 
+               alt="Poisson Braisé & Grillades" 
+               class="absolute inset-0 w-full h-full object-cover filter brightness-[0.4] contrast-125">
+          <div class="absolute inset-0 bg-gradient-to-t from-aurelia-black via-aurelia-black/40 to-transparent"></div>
           
-          <div class="relative z-10 flex items-center justify-between">
-            <span class="text-[9px] uppercase tracking-[0.25em] text-aurelia-lightGold font-semibold">Grillades & Poissons</span>
-            <span class="text-[9px] uppercase tracking-[0.25em] text-aurelia-lightGold bg-black/60 px-2 py-0.5 rounded border border-aurelia-border">02</span>
+          <div class="relative z-10 text-right">
+            <span class="text-[9px] uppercase tracking-[0.25em] text-aurelia-lightGold bg-black/60 px-2.5 py-1 rounded border border-aurelia-border">02</span>
           </div>
 
-          <!-- Les 3 vignettes : Poisson Braisé, Viande au Charbon, Gambas -->
-          <div class="relative z-10 grid grid-cols-3 gap-2.5 my-4">
-            <!-- 1. Poisson Braisé -->
-            <div class="group/item text-center">
-              <div class="h-24 sm:h-28 rounded overflow-hidden border border-white/10 mb-2 relative bg-black">
-                <img src="https://images.unsplash.com/photo-1534939561126-855b8675edd7?auto=format&fit=crop&w=400&q=80" 
-                     alt="Poisson braisé" 
-                     class="w-full h-full object-cover group-hover/item:scale-110 transition-transform duration-500">
-                <span class="absolute bottom-1 right-1 text-[8px] bg-black/80 text-aurelia-lightGold px-1 rounded font-bold">Frais</span>
-              </div>
-              <span class="text-[11px] font-serif text-white block font-medium">Poisson Braisé</span>
-              <span class="text-[10px] text-aurelia-lightGold font-bold">6 000 F</span>
-            </div>
-
-            <!-- 2. Viande au charbon / Dibi -->
-            <div class="group/item text-center">
-              <div class="h-24 sm:h-28 rounded overflow-hidden border border-white/10 mb-2 relative bg-black">
-                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80" 
-                     alt="Viande au charbon" 
-                     class="w-full h-full object-cover group-hover/item:scale-110 transition-transform duration-500">
-                <span class="absolute bottom-1 right-1 text-[8px] bg-black/80 text-aurelia-lightGold px-1 rounded font-bold">500g</span>
-              </div>
-              <span class="text-[11px] font-serif text-white block font-medium">Viande Charbon</span>
-              <span class="text-[10px] text-aurelia-lightGold font-bold">6 000 F</span>
-            </div>
-
-            <!-- 3. Gambas -->
-            <div class="group/item text-center">
-              <div class="h-24 sm:h-28 rounded overflow-hidden border border-white/10 mb-2 relative bg-black">
-                <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=400&q=80" 
-                     alt="Gambas sautées" 
-                     class="w-full h-full object-cover group-hover/item:scale-110 transition-transform duration-500">
-                <span class="absolute bottom-1 right-1 text-[8px] bg-black/80 text-aurelia-lightGold px-1 rounded font-bold">Chef</span>
-              </div>
-              <span class="text-[11px] font-serif text-white block font-medium">Gambas Miel</span>
-              <span class="text-[10px] text-aurelia-lightGold font-bold">7 000 F</span>
-            </div>
-          </div>
-
-          <div class="relative z-10 text-center pt-2 border-t border-white/5">
-            <h3 class="text-xl font-serif text-white uppercase tracking-wider mb-1">Explosion de Saveurs</h3>
+          <div class="relative z-10 text-center">
+            <h3 class="text-2xl font-serif text-white uppercase tracking-wider mb-1">Explosion de Saveurs</h3>
+            <p class="text-[11px] text-gray-300 font-light leading-relaxed mb-4">Poissons entiers braisés, dibi d'agneau et gambas caramélisées au miel.</p>
             <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-aurelia-lightGold group-hover:underline">
-              Découvrir les grillades &rarr;
+              Découvrir les plats &rarr;
             </span>
           </div>
         </div>
 
-        <!-- CARTE 3 : BOISSONS & MIXOLOGIE SIGNATURE -->
-        <div onclick="openMenuModal('boissons')" class="soul-card cursor-pointer bg-aurelia-card rounded-md overflow-hidden border border-white/5 p-6 flex flex-col justify-between min-h-[470px] relative group">
+        <!-- Carte 3 : Cocktails -->
+        <div onclick="openMenuModal('boissons')" class="soul-card cursor-pointer bg-aurelia-card rounded-md overflow-hidden border border-white/5 p-6 flex flex-col justify-between h-[450px] relative group">
           <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80" 
                alt="Cocktails & Vins" 
                class="absolute inset-0 w-full h-full object-cover filter brightness-[0.4] contrast-125">
@@ -375,8 +313,8 @@
           </div>
 
           <div class="relative z-10 text-center">
-            <h3 class="text-2xl font-serif text-white uppercase tracking-wider mb-1">Boissons Signatures</h3>
-            <p class="text-[11px] text-gray-300 font-light leading-relaxed mb-4">DaVinci Bull Dog, Mojitos parfumés, cocktails créatifs et spiritueux de prestige.</p>
+            <h3 class="text-2xl font-serif text-white uppercase tracking-wider mb-1">Cocktails Signatures</h3>
+            <p class="text-[11px] text-gray-300 font-light leading-relaxed mb-4">DaVinci Bull Dog, Mojitos parfumés et sélection de vins servis jusqu'à 02h00.</p>
             <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-aurelia-lightGold group-hover:underline">
               Explorer le bar &rarr;
             </span>
@@ -388,10 +326,13 @@
     </div>
   </section>
 
-  <!-- SECTION ÉDITORIALE : NOTRE HISTOIRE (TRADUCTION FRANÇAISE) -->
+  <!-- ========================================================================= -->
+  <!-- SECTION ÉDITORIALE : LA CUISINE RENCONTRE L'ÉMOTION -->
+  <!-- ========================================================================= -->
   <section id="story" class="py-24 max-w-7xl mx-auto px-6 lg:px-12">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
       
+      <!-- Colonne 1 : Photo ambiance salle -->
       <div class="lg:col-span-4 rounded-md overflow-hidden border border-white/5 min-h-[380px] relative group">
         <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" 
              alt="Salle Lounge DaVinci" 
@@ -399,29 +340,31 @@
         <div class="absolute inset-0 bg-gradient-to-t from-aurelia-black via-transparent to-transparent"></div>
       </div>
 
+      <!-- Colonne 2 : Texte Notre Histoire -->
       <div class="lg:col-span-4 bg-aurelia-charcoal p-8 sm:p-10 rounded-md border border-white/5 flex flex-col justify-between text-left">
         <div>
           <span class="text-[10px] uppercase tracking-[0.3em] text-aurelia-gold font-medium mb-3 block">Notre Histoire</span>
           <h3 class="text-2xl sm:text-3xl font-serif text-white leading-snug mb-4">
-            Là Où La Table Devient Émotion
+            Un Lieu Où La Cuisine Rencontre L'Émotion
           </h3>
           <p class="text-xs text-gray-400 font-light leading-relaxed mb-4">
-            DaVinci est né d'une conviction simple : la bonne table rassemble les êtres. Notre cuisine fusionne les saveurs du terroir sénégalais aux grands standards internationaux dans une atmosphère feutrée.
+            DaVinci est né d'une conviction simple : les grands moments naissent autour d'une belle table. Notre cuisine marie la richesse du terroir sénégalais aux plus grands classiques internationaux dans un cadre intimiste et soigné.
           </p>
         </div>
         <button onclick="openMenuModal()" class="text-[11px] uppercase tracking-[0.2em] text-aurelia-lightGold hover:underline text-left inline-flex items-center gap-2">
-          <span>Découvrir l'Esprit</span> &rarr;
+          <span>Notre Histoire</span> &rarr;
         </button>
       </div>
 
+      <!-- Colonne 3 : Le Chef à l'œuvre -->
       <div class="lg:col-span-4 bg-aurelia-charcoal p-8 sm:p-10 rounded-md border border-white/5 flex flex-col justify-between text-left relative overflow-hidden group">
         <div class="relative z-10">
-          <span class="text-[10px] uppercase tracking-[0.3em] text-aurelia-gold font-medium mb-3 block">Le Savoir-Faire</span>
+          <span class="text-[10px] uppercase tracking-[0.3em] text-aurelia-gold font-medium mb-3 block">Le Mot Du Chef</span>
           <h3 class="text-2xl sm:text-3xl font-serif text-white leading-snug mb-4">
-            Forgé Par La Passion
+            Créé Avec Passion
           </h3>
           <p class="text-xs text-gray-400 font-light leading-relaxed mb-6">
-            Avec plus de 15 années d'expertise, notre brigade apporte précision, amour du feu de bois et créativité à chaque assiette servie.
+            Avec plus de 15 années d'expertise, notre brigade met la précision des cuissons au feu de bois et l'amour du bon produit au cœur de chaque assiette.
           </p>
         </div>
         <div class="h-32 rounded overflow-hidden relative border border-white/10 mt-auto">
@@ -435,50 +378,49 @@
   </section>
 
   <!-- ========================================================================= -->
-  <!-- SECTION PLATS SIGNATURES (AVEC PHOTO DU POISSON BRAISÉ 6 000 F) -->
+  <!-- SECTION PLATS SIGNATURES : CHEFS-D'ŒUVRE CULINAIRES -->
   <!-- ========================================================================= -->
   <section id="specialties" class="py-24 bg-aurelia-charcoal border-t border-aurelia-border">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
+        <!-- Titre gauche -->
         <div class="lg:col-span-4 text-left">
           <span class="text-[10px] uppercase tracking-[0.35em] text-aurelia-gold font-medium mb-1 block">Nos Spécialités</span>
           <h2 class="text-3xl sm:text-4xl font-serif text-white font-normal mb-2">Chefs-d'œuvre Culinaires</h2>
-          <p class="text-xs text-gray-400 font-light leading-relaxed mb-4">Chaque assiette raconte une histoire, une composition de textures et de saveurs authentiques.</p>
+          <p class="text-xs text-gray-400 font-light leading-relaxed mb-4">Chaque plat est une création originale mariant fraîcheur, textures et parfums uniques.</p>
           <button onclick="openMenuModal()" class="text-[11px] uppercase tracking-[0.2em] text-aurelia-lightGold hover:underline inline-flex items-center gap-2">
-            <span>Voir toute la carte</span> &rarr;
+            <span>Voir Tous Les Plats</span> &rarr;
           </button>
         </div>
 
+        <!-- 3 Assiettes phares -->
         <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-5">
           
-          <!-- Plat 1 : Filet de Bœuf -->
           <div onclick="openMenuModal('plats')" class="cursor-pointer bg-aurelia-card p-4 rounded border border-white/5 hover:border-aurelia-gold/40 transition group">
             <div class="h-40 rounded overflow-hidden mb-3 bg-aurelia-black">
               <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80" alt="Filet Bœuf" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
             </div>
             <h4 class="font-serif text-base text-white font-medium mb-1">Filet de Bœuf</h4>
-            <p class="text-[11px] text-gray-400 font-light mb-2">Pièce grillée à point, sauce au choix.</p>
+            <p class="text-[11px] text-gray-400 font-light mb-2">Pièce grillée à point avec sauce au choix.</p>
             <div class="text-aurelia-lightGold font-serif font-bold text-sm">7 000 FCFA</div>
           </div>
 
-          <!-- Plat 2 : VIGNETTE RÉELLE POISSON BRAISÉ 6 000 F -->
           <div onclick="openMenuModal('plats')" class="cursor-pointer bg-aurelia-card p-4 rounded border border-white/5 hover:border-aurelia-gold/40 transition group">
             <div class="h-40 rounded overflow-hidden mb-3 bg-aurelia-black">
-              <img src="https://images.unsplash.com/photo-1534939561126-855b8675edd7?auto=format&fit=crop&w=500&q=80" alt="Poisson Braisé DaVinci 6000 FCFA" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+              <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=500&q=80" alt="Poisson Braisé" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
             </div>
-            <h4 class="font-serif text-base text-white font-medium mb-1">Poisson Braisé</h4>
-            <p class="text-[11px] text-gray-400 font-light mb-2">Entier au charbon naturel & marinade maison.</p>
+            <h4 class="font-serif text-base text-white font-medium mb-1">Poisson Braisé Entier</h4>
+            <p class="text-[11px] text-gray-400 font-light mb-2">Braisé au charbon & marinade sénégalaise.</p>
             <div class="text-aurelia-lightGold font-serif font-bold text-sm">6 000 FCFA</div>
           </div>
 
-          <!-- Plat 3 : Cocktail Signature -->
           <div onclick="openMenuModal('boissons')" class="cursor-pointer bg-aurelia-card p-4 rounded border border-white/5 hover:border-aurelia-gold/40 transition group">
             <div class="h-40 rounded overflow-hidden mb-3 bg-aurelia-black">
               <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=500&q=80" alt="Cocktail Bull Dog" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
             </div>
             <h4 class="font-serif text-base text-white font-medium mb-1">DaVinci Bull Dog</h4>
-            <p class="text-[11px] text-gray-400 font-light mb-2">Cocktail signature rafraîchissant.</p>
+            <p class="text-[11px] text-gray-400 font-light mb-2">Cocktail signature frais et festif.</p>
             <div class="text-aurelia-lightGold font-serif font-bold text-sm">6 500 FCFA</div>
           </div>
 
@@ -489,21 +431,23 @@
   </section>
 
   <!-- ========================================================================= -->
-  <!-- SECTION RÉSERVATION DIRECTE INTÉGRÉE (100% FRANÇAIS) -->
+  <!-- SECTION RÉSERVATION DIRECTE SUR WHATSAPP -->
   <!-- ========================================================================= -->
   <section id="secure" class="py-20 max-w-7xl mx-auto px-6 lg:px-12">
     <div class="bg-gradient-to-r from-aurelia-charcoal via-aurelia-card to-aurelia-charcoal border border-aurelia-border p-8 sm:p-12 rounded-lg shadow-2xl">
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         
+        <!-- Titre gauche -->
         <div class="lg:col-span-4 text-left">
           <span class="text-[10px] uppercase tracking-[0.35em] text-aurelia-gold font-medium mb-1 block">Réservation</span>
           <h3 class="text-3xl sm:text-4xl font-serif text-white font-normal mb-2">Réservez Votre Table</h3>
           <p class="text-xs text-gray-400 font-light leading-relaxed">
-            Un espace intimiste, des places privilégiées sur la terrasse. Confirmez dès maintenant votre venue.
+            Un cadre intimiste avec un nombre de places limité en terrasse. Réservez à l'avance pour vous assurer la meilleure table.
           </p>
         </div>
 
+        <!-- Formulaire horizontal avec bouton scintillant -->
         <div class="lg:col-span-8">
           <form onsubmit="handleQuickBooking(event)" class="grid grid-cols-1 sm:grid-cols-4 gap-3 bg-aurelia-black/90 p-3 rounded border border-white/10">
             
@@ -529,12 +473,12 @@
                 <option value="2 Personnes" class="bg-aurelia-black" selected>2 Personnes</option>
                 <option value="3 à 4 Personnes" class="bg-aurelia-black">3 - 4 Personnes</option>
                 <option value="5 à 8 Personnes" class="bg-aurelia-black">5 - 8 Personnes</option>
-                <option value="Groupe VIP (+8)" class="bg-aurelia-black">Groupe (+ de 8)</option>
+                <option value="Groupe VIP (+8)" class="bg-aurelia-black">Groupe VIP (+ de 8)</option>
               </select>
             </div>
 
             <button type="submit" class="btn-sparkle py-3 rounded text-xs uppercase tracking-[0.18em] font-semibold flex items-center justify-center gap-2">
-              <span>Confirmer</span>
+              <span>Réserver</span>
               <i class="fa-solid fa-arrow-right text-[10px]"></i>
             </button>
 
@@ -547,7 +491,7 @@
   </section>
 
   <!-- ========================================================================= -->
-  <!-- AVIS CLIENTS GOOGLE 4.4 ★ -->
+  <!-- SECTION AVIS CLIENTS GOOGLE (4,4 ★ SUR 90 AVIS) -->
   <!-- ========================================================================= -->
   <section class="py-20 max-w-7xl mx-auto px-6 lg:px-12 border-t border-white/5">
     <div class="text-center mb-14">
@@ -559,7 +503,7 @@
         <i class="fa-solid fa-star-half-stroke"></i>
       </div>
       <h2 class="text-3xl sm:text-5xl font-serif text-white font-normal mb-2">Avis Vérifiés Google</h2>
-      <p class="text-xs text-gray-400">Note certifiée de <strong class="text-aurelia-lightGold">4,4 / 5</strong> basée sur plus de 90 avis à Rufisque & Dakar</p>
+      <p class="text-xs text-gray-400">Note certifiée de <strong class="text-aurelia-lightGold">4,4 / 5</strong> basée sur plus de 90 avis réels à Rufisque et Dakar</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -572,7 +516,7 @@
           <div class="w-8 h-8 rounded-full bg-aurelia-gold text-aurelia-black font-bold flex items-center justify-center text-xs">MD</div>
           <div>
             <h5 class="text-xs font-semibold text-white">Mamadou D.</h5>
-            <span class="text-[10px] text-gray-400">Client Google &bull; Rufisque</span>
+            <span class="text-[10px] text-gray-400">Client Google vérifié &bull; Rufisque</span>
           </div>
         </div>
       </div>
@@ -585,7 +529,7 @@
           <div class="w-8 h-8 rounded-full bg-aurelia-gold text-aurelia-black font-bold flex items-center justify-center text-xs">AS</div>
           <div>
             <h5 class="text-xs font-semibold text-white">Awa S.</h5>
-            <span class="text-[10px] text-gray-400">Cliente Google &bull; Dakar</span>
+            <span class="text-[10px] text-gray-400">Cliente Google vérifiée &bull; Dakar</span>
           </div>
         </div>
       </div>
@@ -598,7 +542,7 @@
           <div class="w-8 h-8 rounded-full bg-aurelia-gold text-aurelia-black font-bold flex items-center justify-center text-xs">IN</div>
           <div>
             <h5 class="text-xs font-semibold text-white">Ibrahima N.</h5>
-            <span class="text-[10px] text-gray-400">Client Google &bull; Rufisque</span>
+            <span class="text-[10px] text-gray-400">Client Google vérifié &bull; Rufisque</span>
           </div>
         </div>
       </div>
@@ -606,13 +550,15 @@
     </div>
   </section>
 
-  <!-- SECTION CONTACT & ACCÈS (EN FRANÇAIS) -->
+  <!-- ========================================================================= -->
+  <!-- SECTION CONTACT & ACCÈS MAPS -->
+  <!-- ========================================================================= -->
   <section id="contact" class="py-20 bg-aurelia-charcoal border-t border-aurelia-border">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
         <div class="text-left">
-          <span class="text-[10px] uppercase tracking-[0.35em] text-aurelia-gold font-medium mb-1 block">Localisation</span>
+          <span class="text-[10px] uppercase tracking-[0.35em] text-aurelia-gold font-medium mb-1 block">Notre Adresse</span>
           <h2 class="text-3xl sm:text-5xl font-serif text-white font-normal mb-6">Au Cœur de Rufisque</h2>
           
           <div class="space-y-4 text-xs font-light text-gray-300 mb-8">
@@ -633,7 +579,7 @@
           <div class="flex flex-wrap gap-4">
             <a href="https://maps.app.goo.gl/tGwfVDysir6upeB3A" target="_blank" class="btn-sparkle px-6 py-3 rounded text-xs uppercase tracking-[0.18em] inline-flex items-center gap-2">
               <i class="fa-solid fa-location-arrow text-[11px]"></i>
-              <span>Ouvrir l'Itinéraire</span>
+              <span>Ouvrir l'Itinéraire Maps</span>
             </a>
             <a href="https://www.instagram.com/davinci.almadies2/" target="_blank" class="btn-outline-sparkle px-6 py-3 rounded text-xs uppercase tracking-[0.18em] inline-flex items-center gap-2">
               <i class="fa-brands fa-instagram"></i>
@@ -657,7 +603,7 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- PIED DE PAGE -->
   <footer class="bg-aurelia-black py-12 border-t border-white/5 text-center text-xs text-gray-500">
     <div class="max-w-7xl mx-auto px-6 space-y-3">
       <div class="font-serif text-2xl tracking-[0.25em] text-white uppercase">DaVinci</div>
@@ -893,7 +839,9 @@
   </div>
 
 
-  <!-- 2. TIROIR MODAL : RÉSERVATION DIRECTE PAR WHATSAPP -->
+  <!-- ========================================================================= -->
+  <!-- 2. TIROIR MODAL : RÉSERVATION DIRECTE SUR WHATSAPP -->
+  <!-- ========================================================================= -->
   <div id="booking-modal" class="drawer-modal fixed top-0 right-0 w-full sm:w-[540px] h-full bg-aurelia-charcoal border-l border-aurelia-border z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-hidden">
     
     <div class="p-6 border-b border-white/10 bg-aurelia-black shrink-0 flex items-center justify-between">
