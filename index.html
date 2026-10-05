@@ -139,9 +139,16 @@
       background: linear-gradient(to bottom, #f7deaf, #a87932);
       border-radius: 9999px;
     }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
 
     /* =========================================================================
-       SYSTÈME SCROLL REVEAL (FADE-IN + SLIDE-UP + SUBTLE ZOOM HAUTE GASTRONOMIE)
+       SYSTÈME SCROLL REVEAL (FADE-IN + SLIDE-UP + SUBTLE ZOOM)
        ========================================================================= */
     .reveal-item {
       opacity: 0;
@@ -157,17 +164,35 @@
       will-change: opacity, transform;
     }
 
-    /* État actif déclenché par l'observateur */
     .reveal-active {
       opacity: 1 !important;
       transform: translateY(0) scale(1) !important;
     }
 
-    /* Délais étagés pour apparition en cascade (Stagger effect) */
-    .delay-100 { transition-delay: 0.1s; }
-    .delay-200 { transition-delay: 0.2s; }
-    .delay-300 { transition-delay: 0.3s; }
-    .delay-400 { transition-delay: 0.4s; }
+    .delay-100 { transition-delay: 0.08s; }
+    .delay-200 { transition-delay: 0.16s; }
+    .delay-300 { transition-delay: 0.24s; }
+
+    /* =========================================================================
+       CARTES GASTRONOMIQUES HAUT DE GAMME AVEC PHOTOS
+       ========================================================================= */
+    .gastro-card {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(216, 171, 102, 0.15);
+      background: #111317;
+    }
+    .gastro-card:hover {
+      border-color: rgba(247, 222, 175, 0.55);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.8), 0 0 25px -5px rgba(216, 171, 102, 0.2);
+    }
+    .gastro-card img {
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+    }
+    .gastro-card:hover img {
+      transform: scale(1.06);
+      filter: brightness(1.05);
+    }
 
     @media (prefers-reduced-motion: reduce) {
       .reveal-item, .reveal-zoom {
@@ -292,7 +317,6 @@
         </p>
       </div>
 
-      <!-- Grille des 3 colonnes avec animations étagées -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
         <!-- Carte 1 : Tapas -->
@@ -418,7 +442,6 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
-        <!-- Titre gauche -->
         <div class="reveal-item lg:col-span-4 text-left">
           <span class="text-[10px] uppercase tracking-[0.35em] text-aurelia-gold font-medium mb-1 block">Nos Spécialités</span>
           <h2 class="text-3xl sm:text-4xl font-serif text-white font-normal mb-2">Chefs-d'œuvre Culinaires</h2>
@@ -428,30 +451,29 @@
           </button>
         </div>
 
-        <!-- 3 Assiettes phares avec apparition en cascade -->
         <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-5">
           
-          <div onclick="openMenuModal('plats')" class="reveal-zoom delay-100 cursor-pointer bg-aurelia-card p-4 rounded border border-white/5 hover:border-aurelia-gold/40 transition group">
-            <div class="h-40 rounded overflow-hidden mb-3 bg-aurelia-black">
-              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80" alt="Filet Bœuf" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <div onclick="openMenuModal('plats')" class="reveal-zoom delay-100 gastro-card cursor-pointer p-4 rounded-sm group">
+            <div class="h-40 rounded-sm overflow-hidden mb-3 bg-aurelia-black">
+              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80" alt="Filet Bœuf" class="w-full h-full object-cover">
             </div>
             <h4 class="font-serif text-base text-white font-medium mb-1">Filet de Bœuf</h4>
             <p class="text-[11px] text-gray-400 font-light mb-2">Pièce grillée à point avec sauce au choix.</p>
             <div class="text-aurelia-lightGold font-serif font-bold text-sm">7 000 FCFA</div>
           </div>
 
-          <div onclick="openMenuModal('plats')" class="reveal-zoom delay-200 cursor-pointer bg-aurelia-card p-4 rounded border border-white/5 hover:border-aurelia-gold/40 transition group">
-            <div class="h-40 rounded overflow-hidden mb-3 bg-aurelia-black">
-              <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=500&q=80" alt="Poisson Braisé" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <div onclick="openMenuModal('plats')" class="reveal-zoom delay-200 gastro-card cursor-pointer p-4 rounded-sm group">
+            <div class="h-40 rounded-sm overflow-hidden mb-3 bg-aurelia-black">
+              <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=500&q=80" alt="Poisson Braisé" class="w-full h-full object-cover">
             </div>
             <h4 class="font-serif text-base text-white font-medium mb-1">Poisson Braisé Entier</h4>
             <p class="text-[11px] text-gray-400 font-light mb-2">Braisé au charbon & marinade sénégalaise.</p>
             <div class="text-aurelia-lightGold font-serif font-bold text-sm">6 000 FCFA</div>
           </div>
 
-          <div onclick="openMenuModal('boissons')" class="reveal-zoom delay-300 cursor-pointer bg-aurelia-card p-4 rounded border border-white/5 hover:border-aurelia-gold/40 transition group">
-            <div class="h-40 rounded overflow-hidden mb-3 bg-aurelia-black">
-              <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=500&q=80" alt="Cocktail Bull Dog" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          <div onclick="openMenuModal('boissons')" class="reveal-zoom delay-300 gastro-card cursor-pointer p-4 rounded-sm group">
+            <div class="h-40 rounded-sm overflow-hidden mb-3 bg-aurelia-black">
+              <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=500&q=80" alt="Cocktail Bull Dog" class="w-full h-full object-cover">
             </div>
             <h4 class="font-serif text-base text-white font-medium mb-1">DaVinci Bull Dog</h4>
             <p class="text-[11px] text-gray-400 font-light mb-2">Cocktail signature frais et festif.</p>
@@ -472,7 +494,6 @@
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         
-        <!-- Titre gauche -->
         <div class="lg:col-span-4 text-left">
           <span class="text-[10px] uppercase tracking-[0.35em] text-aurelia-gold font-medium mb-1 block">Réservation</span>
           <h3 class="text-3xl sm:text-4xl font-serif text-white font-normal mb-2">Réservez Votre Table</h3>
@@ -481,7 +502,6 @@
           </p>
         </div>
 
-        <!-- Formulaire horizontal avec bouton scintillant -->
         <div class="lg:col-span-8">
           <form onsubmit="handleQuickBooking(event)" class="grid grid-cols-1 sm:grid-cols-4 gap-3 bg-aurelia-black/90 p-3 rounded border border-white/10">
             
@@ -647,12 +667,13 @@
   </footer>
 
   <!-- ========================================================================= -->
-  <!-- 1. TIROIR MODAL : CARTE DU MENU AVEC RECHERCHE EN DIRECT -->
+  <!-- 1. TIROIR MODAL : CARTE GASTRONOMIQUE COMPLÈTE AVEC PHOTOS & CATÉGORIES -->
   <!-- ========================================================================= -->
   <div id="menu-overlay" onclick="closeAllModals()" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden opacity-0 transition-opacity duration-300"></div>
 
-  <div id="menu-modal" class="drawer-modal fixed top-0 right-0 w-full sm:w-[580px] md:w-[640px] h-full bg-aurelia-charcoal border-l border-aurelia-border z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-hidden">
+  <div id="menu-modal" class="drawer-modal fixed top-0 right-0 w-full sm:w-[620px] md:w-[720px] h-full bg-aurelia-charcoal border-l border-aurelia-border z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-hidden">
     
+    <!-- En-tête -->
     <div class="p-6 border-b border-white/10 bg-aurelia-black shrink-0 space-y-4">
       <div class="flex items-center justify-between">
         <div>
@@ -664,6 +685,7 @@
         </button>
       </div>
 
+      <!-- Recherche instantanée -->
       <div class="relative">
         <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
         <input type="text" id="menu-search" oninput="filterMenuItems()" placeholder="Rechercher un plat, poisson, dibi, burger, cocktail..." 
@@ -671,7 +693,8 @@
       </div>
     </div>
 
-    <div class="px-6 py-3 border-b border-white/5 bg-aurelia-black shrink-0 overflow-x-auto flex gap-2 no-scrollbar">
+    <!-- Navigation horizontale défilante par catégories (Mobile Ready) -->
+    <div class="px-5 py-3 border-b border-white/5 bg-aurelia-black shrink-0 overflow-x-auto flex gap-2 no-scrollbar">
       <button onclick="switchModalTab('plats')" id="mbtn-plats" class="modal-tab-btn px-4 py-2 rounded text-xs font-semibold uppercase tracking-wider whitespace-nowrap bg-aurelia-gold text-aurelia-black transition">
         Plats & Entrées
       </button>
@@ -686,184 +709,782 @@
       </button>
     </div>
 
-    <div class="p-6 overflow-y-auto flex-1 custom-scroll space-y-8">
+    <!-- Contenu des Plats avec affichage en cartes photos -->
+    <div class="p-6 overflow-y-auto flex-1 custom-scroll space-y-10">
 
-      <div id="mtab-plats" class="modal-content space-y-6">
+      <!-- ================= CATÉGORIE : PLATS & ENTRÉES ================= -->
+      <div id="mtab-plats" class="modal-content space-y-10">
+        
+        <!-- Entrées -->
         <div>
-          <h4 class="text-aurelia-lightGold font-serif text-lg border-b border-white/10 pb-2 mb-3">Entrées</h4>
-          <div class="grid grid-cols-1 gap-2.5">
-            <div class="dish-card bg-aurelia-card p-4 rounded border border-white/5 flex items-center justify-between">
-              <div>
-                <h5 class="text-white text-sm font-medium">Salade Cobb</h5>
-                <p class="text-xs text-gray-400 mt-0.5">Blanc de poulet, tomates cerises, œuf dur, avocat</p>
+          <div class="flex items-center gap-3 border-b border-white/10 pb-3 mb-5">
+            <span class="text-xs uppercase tracking-[0.25em] text-aurelia-lightGold font-serif font-bold text-lg">Entrées Froides & Chaudes</span>
+            <div class="h-[1px] flex-1 bg-gradient-to-r from-aurelia-gold/40 to-transparent"></div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80" alt="Salade Cobb" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">3 000 F</span>
               </div>
-              <span class="text-aurelia-lightGold font-bold ml-4 text-sm whitespace-nowrap">3 000 F</span>
-            </div>
-            <div class="dish-card bg-aurelia-card p-4 rounded border border-white/5 flex items-center justify-between">
-              <div>
-                <h5 class="text-white text-sm font-medium">Croustillant de chèvre au miel</h5>
-                <p class="text-xs text-gray-400 mt-0.5">Brick dorée, fromage de chèvre onctueux, menthe fraîche</p>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Salade Cobb</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1 leading-relaxed">Blanc de poulet émincé, tomates cerises, oignon, œuf dur, avocat mûr et assaisonnement doux.</p>
+                </div>
               </div>
-              <span class="text-aurelia-lightGold font-bold ml-4 text-sm whitespace-nowrap">3 000 F</span>
             </div>
-            <div class="dish-card bg-aurelia-card p-4 rounded border border-white/5 flex items-center justify-between">
-              <div>
-                <h5 class="text-white text-sm font-medium">Assiette Gourmande du Chef</h5>
-                <p class="text-xs text-gray-400 mt-0.5">Crevettes, poulet mariné, calamars sautés</p>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=600&q=80" alt="Croustillant de chèvre" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">3 000 F</span>
               </div>
-              <span class="text-aurelia-lightGold font-bold ml-4 text-sm whitespace-nowrap">3 000 F</span>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Croustillant de chèvre au miel citron</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1 leading-relaxed">Feuille de brick dorée, fromage de chèvre onctueux, miel, menthe fraîche et lit de salade.</p>
+                </div>
+              </div>
             </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" alt="Assiette gourmande" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">3 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Assiette gourmande du chef</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1 leading-relaxed">Crevettes, poulet, calamar sauté, croûtons croustillants, laitue et tomates cerises.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=600&q=80" alt="Fritto misto" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">3 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Fritto misto</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1 leading-relaxed">Crevettes croustillantes, calamar tendre et petits légumes frits façon méditerranéenne.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group sm:col-span-2">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=800&q=80" alt="Salade César" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">3 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Salade César</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1 leading-relaxed">Laitue fraîche, émincé de poulet doré, tomates fraîches, anchois, œuf dur et copeaux de parmesan.</p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
+        <!-- Viandes & Volailles -->
         <div>
-          <h4 class="text-aurelia-lightGold font-serif text-lg border-b border-white/10 pb-2 mb-3">Viandes & Braisés</h4>
-          <div class="grid grid-cols-1 gap-2.5">
-            <div class="dish-card bg-aurelia-card p-4 rounded border border-white/5 flex items-center justify-between">
-              <div>
-                <h5 class="text-white text-sm font-medium">Filet de Bœuf Tendre</h5>
-                <p class="text-xs text-gray-400 mt-0.5">Pièce de premier choix grillée selon votre goût</p>
+          <div class="flex items-center gap-3 border-b border-white/10 pb-3 mb-5">
+            <span class="text-xs uppercase tracking-[0.25em] text-aurelia-lightGold font-serif font-bold text-lg">Viandes & Volailles Braisées</span>
+            <div class="h-[1px] flex-1 bg-gradient-to-r from-aurelia-gold/40 to-transparent"></div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Filet de Bœuf" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">7 000 F</span>
               </div>
-              <span class="text-aurelia-lightGold font-bold ml-4 text-sm whitespace-nowrap">7 000 F</span>
-            </div>
-            <div class="dish-card bg-aurelia-card p-4 rounded border border-white/5 flex items-center justify-between">
-              <div>
-                <h5 class="text-white text-sm font-medium">Dibi Porc Spécial (500g)</h5>
-                <p class="text-xs text-gray-400 mt-0.5">Demi-kilo mariné et cuit au feu de bois</p>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Filet de Bœuf</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Cœur de filet tendre cuit selon votre convenance avec sauce au choix.</p>
+                </div>
               </div>
-              <span class="text-aurelia-lightGold font-bold ml-4 text-sm whitespace-nowrap">6 000 F</span>
             </div>
-            <div class="dish-card bg-aurelia-card p-4 rounded border border-white/5 flex items-center justify-between">
-              <div>
-                <h5 class="text-white text-sm font-medium">1/2 Poulet Braisé DaVinci</h5>
-                <p class="text-xs text-gray-400 mt-0.5">Cuisse & blanc braisés dorés au charbon naturel</p>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=600&q=80" alt="Entrecôte de bœuf" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">7 000 F</span>
               </div>
-              <span class="text-aurelia-lightGold font-bold ml-4 text-sm whitespace-nowrap">5 000 F</span>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Entrecôte de bœuf à la plancha</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Saisie vivement à la plancha pour préserver tout son jus et ses arômes.</p>
+                </div>
+              </div>
             </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=600&q=80" alt="Côtes de porc" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">6 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Côtes de porc marinées au feu de bois</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Marinade secrète du chef et cuisson lente au charbon naturel.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Dibi porc" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">6 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Dibi porc bien mariné (500g)</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Demi-kilo de dibiterie savoureuse avec oignons moutardés.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=600&q=80" alt="1/2 Poulet braisé" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">5 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">1/2 Poulet braisé</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Cuisse & blanc dorés au feu de bois avec condiments du chef.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80" alt="Dibi poulet" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">5 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Dibi poulet bien mariné</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Morceaux de volaille marinés et grillés aux oignons caramélisés.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=600&q=80" alt="Yassa Poulet" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">4 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Yassa Poulet</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Le grand classique sénégalais aux oignons confits, citron et moutarde.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=600&q=80" alt="Wok de poulet" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">5 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Wok de poulet à l'asiatique</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Émincés de poulet sautés minute aux légumes croquants et sauce soja.</p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
+        <!-- Poissons & Crustacés -->
         <div>
-          <h4 class="text-aurelia-lightGold font-serif text-lg border-b border-white/10 pb-2 mb-3">Poissons & Mer</h4>
-          <div class="grid grid-cols-1 gap-2.5">
-            <div class="dish-card bg-aurelia-card p-4 rounded border border-white/5 flex items-center justify-between">
-              <div>
-                <h5 class="text-white text-sm font-medium">Poisson Braisé Entier</h5>
-                <p class="text-xs text-gray-400 mt-0.5">Poisson du jour braisé avec marinade sénégalaise</p>
+          <div class="flex items-center gap-3 border-b border-white/10 pb-3 mb-5">
+            <span class="text-xs uppercase tracking-[0.25em] text-aurelia-lightGold font-serif font-bold text-lg">Poissons & Crustacés</span>
+            <div class="h-[1px] flex-1 bg-gradient-to-r from-aurelia-gold/40 to-transparent"></div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80" alt="Poisson braisé" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">6 000 F</span>
               </div>
-              <span class="text-aurelia-lightGold font-bold ml-4 text-sm whitespace-nowrap">6 000 F</span>
-            </div>
-            <div class="dish-card bg-aurelia-card p-4 rounded border border-white/5 flex items-center justify-between">
-              <div>
-                <h5 class="text-white text-sm font-medium">Gambas au Miel & Gingembre</h5>
-                <p class="text-xs text-gray-400 mt-0.5">Grosses gambas fraîches poêlées</p>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Poisson braisé avec sa marinade</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Poisson du jour entier braisé au charbon avec marinade dakaroise authentique.</p>
+                </div>
               </div>
-              <span class="text-aurelia-lightGold font-bold ml-4 text-sm whitespace-nowrap">7 000 F</span>
             </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80" alt="Filet de capitaine" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">5 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Filet de capitaine poêlé</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Chair délicate dorée à la poêle avec émulsion d'herbes et filet de citron.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=80" alt="Gambas sautés" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">7 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Gambas sautés au miel et gingembre</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Grosses gambas déglacées au miel d'acacia et gingembre frais râpé.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=600&q=80" alt="Gambas à la plancha" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">6 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Gambas à la plancha & riz crémeux</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Gambas saisies minute accompagnées d'un riz onctueux délicatement parfumé.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group sm:col-span-2">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=800&q=80" alt="Brochette de Gambas" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">5 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Brochette de Gambas</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Brochettes de gambas fraîches marinées et grillées au feu de bois.</p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        <div class="p-3 bg-aurelia-black rounded text-center border border-white/5 text-xs text-gray-400">
-          <span class="text-aurelia-gold font-bold">Garnitures au choix :</span> Frites, Aloco doré, Riz crémeux, Attiéké ou Légumes vapeur
+        <!-- Encadré Garnitures -->
+        <div class="p-4 bg-aurelia-black rounded border border-aurelia-border text-center">
+          <span class="text-xs uppercase tracking-widest text-aurelia-lightGold font-semibold block mb-1">Garnitures au choix :</span>
+          <p class="text-xs text-gray-400 font-light">Frites, Riz blanc, Légumes sautés, Aloco, Attiéké, Pommes sautées, Crudités</p>
         </div>
+
       </div>
 
-      <div id="mtab-pizzas" class="modal-content space-y-6 hidden">
+      <!-- ================= CATÉGORIE : PIZZAS & BURGERS ================= -->
+      <div id="mtab-pizzas" class="modal-content space-y-10 hidden">
+        
+        <!-- Pâtes Italiennes -->
         <div>
-          <h4 class="text-aurelia-lightGold font-serif text-lg border-b border-white/10 pb-2 mb-3">Pizzas Maison</h4>
-          <div class="grid grid-cols-1 gap-2.5">
-            <div class="dish-card bg-aurelia-card p-4 rounded border border-white/5 flex items-center justify-between">
-              <div>
-                <h5 class="text-white text-sm font-medium">Pizza Signature DaVinci</h5>
-                <p class="text-xs text-gray-400 mt-0.5">Sauce tomate, mozzarella, poulet fumé, buffala</p>
+          <div class="flex items-center gap-3 border-b border-white/10 pb-3 mb-5">
+            <span class="text-xs uppercase tracking-[0.25em] text-aurelia-lightGold font-serif font-bold text-lg">Les Pâtes Artisanales</span>
+            <div class="h-[1px] flex-1 bg-gradient-to-r from-aurelia-gold/40 to-transparent"></div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80" alt="Tagliatelle aux fruits de mer" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">5 000 F</span>
               </div>
-              <span class="text-aurelia-lightGold font-bold ml-4 text-sm whitespace-nowrap">6 000 F</span>
-            </div>
-            <div class="dish-card bg-aurelia-card p-4 rounded border border-white/5 flex items-center justify-between">
-              <div>
-                <h5 class="text-white text-sm font-medium">Pizza Fruits de Mer</h5>
-                <p class="text-xs text-gray-400 mt-0.5">Crevettes, calamars, moules</p>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Tagliatelle aux fruits de mer</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Crevettes, moules, calamar et sauce persillée.</p>
+                </div>
               </div>
-              <span class="text-aurelia-lightGold font-bold ml-4 text-sm whitespace-nowrap">6 000 F</span>
             </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=600&q=80" alt="Penne carbonara" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">5 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Penne carbonara au poulet</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Courgettes, blanc de poulet, œuf, crème fraîche et parmesan.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1621996346565-e3d5d6281724?auto=format&fit=crop&w=600&q=80" alt="Bolognaise" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">5 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Bolognaise</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Viande hachée mijotée, sauce tomate maison et parmesan râpé.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1608897013039-887f21d8c804?auto=format&fit=crop&w=600&q=80" alt="Tagliatelle crème parmesan" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">4 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Tagliatelle à la crème parmesan</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Pâtes fraîches enrobées d'une onctueuse crème de parmesan.</p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
+        <!-- Pizzas Maison -->
         <div>
-          <h4 class="text-aurelia-lightGold font-serif text-lg border-b border-white/10 pb-2 mb-3">Burgers & Tacos (3 000 F)</h4>
-          <div class="grid grid-cols-1 gap-2.5">
-            <div class="dish-card bg-aurelia-card p-4 rounded border border-white/5 flex items-center justify-between">
-              <div>
-                <h5 class="text-white text-sm font-medium">American Burger Maison</h5>
-                <p class="text-xs text-gray-400 mt-0.5">Steak pur bœuf, double cheddar fondu, oignons confits</p>
+          <div class="flex items-center gap-3 border-b border-white/10 pb-3 mb-5">
+            <span class="text-xs uppercase tracking-[0.25em] text-aurelia-lightGold font-serif font-bold text-lg">Nos Pizzas au Feu de Bois</span>
+            <div class="h-[1px] flex-1 bg-gradient-to-r from-aurelia-gold/40 to-transparent"></div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" alt="Pizza DaVinci" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">6 000 F</span>
               </div>
-              <span class="text-aurelia-lightGold font-bold ml-4 text-sm whitespace-nowrap">3 000 F</span>
-            </div>
-            <div class="dish-card bg-aurelia-card p-4 rounded border border-white/5 flex items-center justify-between">
-              <div>
-                <h5 class="text-white text-sm font-medium">Tacos Poulet Gratiné</h5>
-                <p class="text-xs text-gray-400 mt-0.5">Sauce fromagère maison</p>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Pizza DaVinci</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Sauce tomate mijotée, mozzarella fondante, poulet fumé et buffala fraîche.</p>
+                </div>
               </div>
-              <span class="text-aurelia-lightGold font-bold ml-4 text-sm whitespace-nowrap">3 000 F</span>
             </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80" alt="Pizza Fruits de mer" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">6 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Pizza Fruits de mer</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Sauce tomate, mozzarella et généreux assortiment de fruits de mer.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80" alt="Reine / Pepperoni" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">6 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Reine / Pepperoni</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Sauce tomate, fromage fondant, champignons frais ou tranches de pepperoni épicé.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80" alt="Margherita" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">5 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Margherita</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Sauce tomate cuisinée, mozzarella fondante et feuilles de basilic frais.</p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
+
+        <!-- Burgers & Tacos -->
+        <div>
+          <div class="flex items-center gap-3 border-b border-white/10 pb-3 mb-5">
+            <span class="text-xs uppercase tracking-[0.25em] text-aurelia-lightGold font-serif font-bold text-lg">Burgers & Tacos Gourmets (3 000 F)</span>
+            <div class="h-[1px] flex-1 bg-gradient-to-r from-aurelia-gold/40 to-transparent"></div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="American Burger" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">3 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">American Burger</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Steak haché pur bœuf, double cheddar fondu, oignons caramélisés et sauce burger maison.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=600&q=80" alt="Tacos Poulet" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">3 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Tacos Poulet</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Émincé de poulet sauté, frites croustillantes et généreuse sauce fromagère.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=600&q=80" alt="Philly steak" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">3 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Philly steak au fromage</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Fines lamelles de bœuf saisies à la plancha, poivrons fondants et fromage américain.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=600&q=80" alt="DaVinci po'boy" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">3 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">DaVinci crevette po'boy</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Sandwich louisianais généreusement garni de crevettes dorées et sauce rémoulade.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
 
-      <div id="mtab-afterwork" class="modal-content space-y-6 hidden">
+      <!-- ================= CATÉGORIE : TAPAS & DESSERTS ================= -->
+      <div id="mtab-afterwork" class="modal-content space-y-10 hidden">
+        
+        <!-- Tapas & Amuse-bouches -->
         <div>
-          <h4 class="text-aurelia-lightGold font-serif text-lg border-b border-white/10 pb-2 mb-3">Tapas & Amuse-bouches</h4>
-          <div class="grid grid-cols-1 gap-2.5">
-            <div class="dish-card bg-aurelia-card p-4 rounded border border-white/5 flex items-center justify-between">
-              <div><h5 class="text-white text-sm font-medium">Fataya Viande (6 pcs)</h5></div>
-              <span class="text-aurelia-lightGold font-bold ml-4 text-sm whitespace-nowrap">3 000 F</span>
-            </div>
-            <div class="dish-card bg-aurelia-card p-4 rounded border border-white/5 flex items-center justify-between">
-              <div><h5 class="text-white text-sm font-medium">Nems Croustillants (6 pcs)</h5></div>
-              <span class="text-aurelia-lightGold font-bold ml-4 text-sm whitespace-nowrap">3 000 F</span>
-            </div>
-            <div class="dish-card bg-aurelia-card p-4 rounded border border-white/5 flex items-center justify-between">
-              <div>
-                <h5 class="text-white text-sm font-medium">Assiette Mixte DaVinci</h5>
-                <p class="text-xs text-gray-400 mt-0.5">Fatayas, nems, mini brochettes & gambas</p>
+          <div class="flex items-center gap-3 border-b border-white/10 pb-3 mb-5">
+            <span class="text-xs uppercase tracking-[0.25em] text-aurelia-lightGold font-serif font-bold text-lg">Tapas & Amuse-bouches After Work</span>
+            <div class="h-[1px] flex-1 bg-gradient-to-r from-aurelia-gold/40 to-transparent"></div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80" alt="Fataya" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">3 000 F</span>
               </div>
-              <span class="text-aurelia-lightGold font-bold ml-4 text-sm whitespace-nowrap">7 000 F</span>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Assiette de Fataya (6 pcs)</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Beignets traditionnels croustillants farcis à la viande hachée épicée.</p>
+                </div>
+              </div>
             </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Nems" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">3 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Assiette de Nems (6 pcs)</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Rouleaux impériaux dorés servis avec sauce aigre-douce.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80" alt="Mini brochettes" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">6 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Mini brochettes (12 pcs)</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Assortiment de bouchées grillées au barbecue idéales pour l'apéritif.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1527477378696-6e4b47c430e7?auto=format&fit=crop&w=600&q=80" alt="Wings teriyaki" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">3 000 / 6 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Wings teriyaki (6 pcs / 12 pcs)</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Ailerons de poulet laqués à la sauce teriyaki japonaise et graines de sésame.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=600&q=80" alt="Tacos mexicain" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">4 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Tacos Mexicain (5 pcs)</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Petits tacos apéritifs croquants garnis de saveurs épicées.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Assiette Mix DaVinci" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">7 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Assiette Mix DaVinci</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Plateau dégustation prestige : fatayas, nems, mini brochettes et gambas sautées.</p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
+
+        <!-- Desserts Gourmands -->
+        <div>
+          <div class="flex items-center gap-3 border-b border-white/10 pb-3 mb-5">
+            <span class="text-xs uppercase tracking-[0.25em] text-aurelia-lightGold font-serif font-bold text-lg">Desserts Gourmands</span>
+            <div class="h-[1px] flex-1 bg-gradient-to-r from-aurelia-gold/40 to-transparent"></div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=600&q=80" alt="Fondant au chocolat" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">4 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Fondant au chocolat, Glace vanille</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Cœur coulant au chocolat noir 70% et boule de crème glacée vanille bourbon.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=600&q=80" alt="Tiramisu" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">3 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Tiramisu au copeau de coco</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Crème mascarpone légère, biscuit café et éclats croustillants de noix de coco.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=600&q=80" alt="Crêpes DaVinci" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">3 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Crêpes DaVinci (2 pcs)</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Deux fines crêpes maison nappées au choix (chocolat, miel ou caramel beurre salé).</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=600&q=80" alt="Crème Brûlée" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">3 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Crème Brûlée</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Crème onctueuse à la vanille bourbon sous sa fine coque de sucre caramélisé à la flamme.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
 
-      <div id="mtab-boissons" class="modal-content space-y-6 hidden">
+      <!-- ================= CATÉGORIE : BAR & COCKTAILS ================= -->
+      <div id="mtab-boissons" class="modal-content space-y-10 hidden">
+        
+        <!-- Cocktails Alcoolisés -->
         <div>
-          <h4 class="text-aurelia-lightGold font-serif text-lg border-b border-white/10 pb-2 mb-3">Cocktails Signatures</h4>
-          <div class="grid grid-cols-1 gap-2.5">
-            <div class="dish-card bg-aurelia-card p-4 rounded border border-white/5 flex items-center justify-between">
-              <div>
-                <h5 class="text-white text-sm font-medium">DaVinci Bull Dog</h5>
-                <p class="text-xs text-gray-400 mt-0.5">Téquila, cointreau, citron vert, desperados</p>
+          <div class="flex items-center gap-3 border-b border-white/10 pb-3 mb-5">
+            <span class="text-xs uppercase tracking-[0.25em] text-aurelia-lightGold font-serif font-bold text-lg">Cocktails Signatures & Alcoolisés</span>
+            <div class="h-[1px] flex-1 bg-gradient-to-r from-aurelia-gold/40 to-transparent"></div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80" alt="DaVinci Bull Dog" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">6 500 F</span>
               </div>
-              <span class="text-aurelia-lightGold font-bold ml-4 text-sm whitespace-nowrap">6 500 F</span>
-            </div>
-            <div class="dish-card bg-aurelia-card p-4 rounded border border-white/5 flex items-center justify-between">
-              <div>
-                <h5 class="text-white text-sm font-medium">Blue Hawaï / Lagon</h5>
-                <p class="text-xs text-gray-400 mt-0.5">Vodka, curaçao bleu, jus d'ananas frais</p>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">DaVinci Bull Dog</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Téquila, cointreau, jus de citron vert et bouteille de Desperados renversée.</p>
+                </div>
               </div>
-              <span class="text-aurelia-lightGold font-bold ml-4 text-sm whitespace-nowrap">5 000 F</span>
             </div>
-            <div class="dish-card bg-aurelia-card p-4 rounded border border-white/5 flex items-center justify-between">
-              <div>
-                <h5 class="text-white text-sm font-medium">Jus Naturels Locaux</h5>
-                <p class="text-xs text-gray-400 mt-0.5">Bissap, Bouye ou Ditakh frais glacé</p>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&w=600&q=80" alt="Long Island" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">6 500 F</span>
               </div>
-              <span class="text-aurelia-lightGold font-bold ml-4 text-sm whitespace-nowrap">1 500 F</span>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Long Island</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Vodka, gin, rhum blanc, téquila, triple sec, citron et trait de cola.</p>
+                </div>
+              </div>
             </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=600&q=80" alt="Blue Hawaï" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">5 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Blue Hawaï / Bleu Lagon</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Vodka de prestige, curaçao bleu électrique et jus d'ananas frais.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=600&q=80" alt="Mojito" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">5 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Mojito au choix</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Rhum blanc, menthe fraîche pilée, citron vert et purée de fruit (classique, fraise ou passion).</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group sm:col-span-2">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1560512823-829485b8bf24?auto=format&fit=crop&w=800&q=80" alt="Shooters" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">2 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Shooters (B52, DaVinci...)</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Créations étagées festives servies bien fraîches au bar.</p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
+
+        <!-- Sans Alcool & Jus -->
+        <div>
+          <div class="flex items-center gap-3 border-b border-white/10 pb-3 mb-5">
+            <span class="text-xs uppercase tracking-[0.25em] text-aurelia-lightGold font-serif font-bold text-lg">Sans Alcool & Jus Locaux</span>
+            <div class="h-[1px] flex-1 bg-gradient-to-r from-aurelia-gold/40 to-transparent"></div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80" alt="Cocktail DaVinci sans alcool" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">4 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Cocktail DaVinci sans alcool</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Mélange exotique de fruits frais, jus d'ananas, mangue et grenadine.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=600&q=80" alt="Virgin Mojito" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">4 000 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Virgin Mojito / Virgin Colada</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Cocktail mocktail sans alcool rafraîchissant à la menthe ou à la crème de coco.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dish-card gastro-card rounded-md overflow-hidden flex flex-col justify-between group sm:col-span-2">
+              <div class="h-44 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&w=800&q=80" alt="Jus Locaux" class="w-full h-full object-cover">
+                <span class="absolute top-2.5 right-2.5 bg-aurelia-black/80 backdrop-blur-md border border-aurelia-gold/30 text-aurelia-lightGold text-xs font-serif font-bold px-2.5 py-1 rounded">1 500 F</span>
+              </div>
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-white text-base font-serif font-medium group-hover:text-aurelia-lightGold transition">Jus Locaux (Bissap, Bouye, Ditakh, Gingembre)</h5>
+                  <p class="text-[11px] text-gray-400 font-light mt-1">Pur jus de fruits locaux fraîchement pressés et servis très glacés.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
 
     </div>
 
+    <!-- Pied du tiroir carte -->
     <div class="p-6 border-t border-white/10 bg-aurelia-black shrink-0">
       <button onclick="closeAllModals(); openBookingModal();" class="btn-sparkle w-full py-3.5 rounded text-xs uppercase tracking-wider flex items-center justify-center gap-2">
         <i class="fa-solid fa-calendar-check"></i>
@@ -966,11 +1587,9 @@
     </div>
   </div>
 
-  <!-- ========================================================================= -->
-  <!-- JAVASCRIPT MODALS & MOTEUR SCROLL REVEAL (INTERSECTION OBSERVER) -->
-  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT MODALS & LOGIQUE INTERACTIVE -->
   <script>
-    // Initialisation du Scroll Reveal élégant
+    // Initialisation du Scroll Reveal
     document.addEventListener("DOMContentLoaded", () => {
       const revealElements = document.querySelectorAll(".reveal-item, .reveal-zoom");
 
@@ -978,7 +1597,7 @@
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add("reveal-active");
-            observer.unobserve(entry.target); // Animation déclenchée une seule fois avec fluidité
+            observer.unobserve(entry.target);
           }
         });
       }, {
