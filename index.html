@@ -3,36 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DaVinci Lounge Bar & Restaurant | Rufisque</title>
+  <title>DaVinci Restaurant Lounge Bar | Rufisque</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Google Fonts: Bebas Neue, Montserrat & Cormorant -->
+  <!-- Google Fonts: Italiana (haute gastronomie) & Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            brand: {
-              magenta: '#ff007a',
-              purple: '#7928ca',
-              gold: '#e0a96d'
+            champagne: {
+              200: '#f5e6cf',
+              300: '#ebd1aa',
+              400: '#e0b87e',
+              500: '#cf9f58',
+              600: '#a87834'
             },
-            dark: {
-              950: '#050507',
-              900: '#0a0a0f',
-              850: '#111118',
-              800: '#171722'
+            night: {
+              950: '#07080a',
+              900: '#0e1015',
+              850: '#14171f',
+              800: '#1c202a',
+              700: '#282d3b'
             }
           },
           fontFamily: {
-            headline: ['"Bebas Neue"', 'sans-serif'],
+            serif: ['"Italiana"', 'serif'],
             sans: ['Montserrat', 'sans-serif']
           }
         }
@@ -41,26 +44,39 @@
   </script>
 
   <style>
-    /* Gradient de texte style Carré VIP */
-    .text-gradient {
-      background: linear-gradient(135deg, #ff007a 0%, #7928ca 50%, #e0a96d 100%);
+    /* Gradient de texte champagne subtil */
+    .text-champagne-grad {
+      background: linear-gradient(135deg, #fcead2 0%, #dfb57c 50%, #b8863b 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .text-gold-gradient {
-      background: linear-gradient(135deg, #fce0ad 0%, #dfa86a 50%, #a27438 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    /* Bouton principal avec halo champagne feutré */
+    .btn-champagne {
+      background: linear-gradient(135deg, #ebd1aa 0%, #cf9f58 60%, #b38038 100%);
+      box-shadow: 0 4px 25px -4px rgba(207, 159, 88, 0.35);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    /* Bouton Glow VIP */
-    .btn-vip {
-      background: linear-gradient(90deg, #ff007a 0%, #8b2df0 100%);
-      box-shadow: 0 0 25px rgba(255, 0, 122, 0.45);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .btn-vip:hover {
-      box-shadow: 0 0 35px rgba(139, 45, 240, 0.7);
+    .btn-champagne:hover {
+      box-shadow: 0 8px 30px 0 rgba(207, 159, 88, 0.55);
       transform: translateY(-2px);
+    }
+    /* Carte bouton interactive avec image de fond */
+    .action-card {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .action-card img {
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+    }
+    .action-card:hover img {
+      transform: scale(1.06);
+      filter: brightness(0.85);
+    }
+    .action-card:hover {
+      border-color: rgba(224, 184, 126, 0.5);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(207, 159, 88, 0.2);
+      transform: translateY(-3px);
     }
     /* Tiroirs / Modals */
     .drawer-modal {
@@ -70,259 +86,273 @@
       width: 4px;
     }
     .custom-scroll::-webkit-scrollbar-thumb {
-      background: linear-gradient(to bottom, #ff007a, #8b2df0);
+      background: linear-gradient(to bottom, #ebd1aa, #a87834);
       border-radius: 9999px;
-    }
-    /* Liseré néon subtil sur cartes */
-    .card-neon {
-      transition: all 0.3s ease;
-    }
-    .card-neon:hover {
-      border-color: rgba(255, 0, 122, 0.6);
-      box-shadow: 0 10px 30px -10px rgba(255, 0, 122, 0.3);
-      transform: translateY(-3px);
     }
   </style>
 </head>
-<body class="bg-dark-950 text-gray-200 font-sans antialiased selection:bg-brand-magenta selection:text-white pb-8">
+<body class="bg-night-950 text-gray-300 font-sans antialiased selection:bg-champagne-500 selection:text-night-950 pb-8">
 
   <!-- BOUTON FLOTTANT WHATSAPP -->
   <a href="https://wa.me/221773090000?text=Bonjour%20DaVinci%2C%20je%20souhaite%20r%C3%A9server%20une%20table%20ou%20avoir%20des%20informations." 
      target="_blank" 
-     class="fixed bottom-6 right-6 z-40 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 active:scale-95 transition-transform duration-300 drop-shadow-[0_10px_20px_rgba(37,211,102,0.4)]"
+     class="fixed bottom-6 right-6 z-40 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 active:scale-95 transition-transform duration-300 drop-shadow-[0_10px_20px_rgba(37,211,102,0.35)]"
      title="WhatsApp DaVinci">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
-  <!-- NAVBAR STYLE VIP -->
-  <nav class="fixed w-full z-40 bg-dark-950/80 backdrop-blur-lg border-b border-white/10 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+  <!-- HALO LUMINEUX DE FOND (AMBIANCE FEUTRÉE SUBTILE) -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-gradient-to-b from-champagne-500/10 via-amber-700/5 to-transparent blur-[120px] pointer-events-none -z-10"></div>
+
+  <!-- NAVBAR -->
+  <nav class="fixed w-full z-40 bg-night-950/80 backdrop-blur-xl border-b border-white/5 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
       <a href="#" class="flex flex-col">
-        <span class="text-3xl font-headline tracking-widest text-white uppercase leading-none">DaVinci</span>
-        <span class="text-[9px] tracking-[0.25em] text-brand-magenta uppercase font-bold mt-1">Rufisque &bull; Dakar</span>
+        <span class="text-3xl font-serif tracking-[0.25em] text-champagne-200 uppercase leading-none">DaVinci</span>
+        <span class="text-[9px] tracking-[0.3em] text-champagne-400/80 uppercase font-light mt-1.5">Restaurant &bull; Lounge</span>
       </a>
 
       <!-- Desktop Links -->
-      <div class="hidden md:flex items-center space-x-8 text-xs uppercase tracking-[0.15em] font-semibold text-gray-300">
-        <a href="#about" class="hover:text-white transition">Le Lieu</a>
-        <button onclick="openMenuModal()" class="hover:text-white transition flex items-center gap-1.5 text-brand-gold">
+      <div class="hidden md:flex items-center space-x-9 text-xs uppercase tracking-[0.2em] font-medium text-gray-300">
+        <a href="#about" class="hover:text-champagne-300 transition">L'Esprit</a>
+        <button onclick="openMenuModal()" class="hover:text-champagne-300 transition flex items-center gap-1.5 text-champagne-400">
           <i class="fa-solid fa-utensils text-[10px]"></i> La Carte
         </button>
-        <a href="#espaces" class="hover:text-white transition">Les Espaces</a>
-        <a href="#contact" class="hover:text-white transition">Infos</a>
+        <a href="#espaces" class="hover:text-champagne-300 transition">Les Salons</a>
+        <a href="#contact" class="hover:text-champagne-300 transition">Accès</a>
       </div>
 
-      <div class="flex items-center space-x-3">
+      <div class="flex items-center space-x-3.5">
         <!-- Instagram -->
-        <a href="https://www.instagram.com/davinci.almadies2/" target="_blank" class="w-10 h-10 rounded-full bg-dark-850 border border-white/10 flex items-center justify-center text-white hover:text-brand-magenta transition-all" title="@davinci.almadies2">
-          <i class="fa-brands fa-instagram text-lg"></i>
+        <a href="https://www.instagram.com/davinci.almadies2/" target="_blank" class="w-10 h-10 rounded-full bg-night-850 border border-white/10 flex items-center justify-center text-champagne-300 hover:text-white hover:border-champagne-400/40 transition" title="@davinci.almadies2">
+          <i class="fa-brands fa-instagram text-base"></i>
         </a>
 
-        <!-- Bouton Réservation VIP -->
-        <button onclick="openBookingModal()" class="btn-vip text-white font-bold px-5 py-2.5 rounded-full text-xs uppercase tracking-wider flex items-center gap-2">
-          <span>Réserver</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        <!-- Bouton Réservation -->
+        <button onclick="openBookingModal()" class="btn-champagne text-night-950 font-bold px-5 py-2.5 rounded-full text-xs uppercase tracking-[0.15em] flex items-center gap-2">
+          <span>Réserver</span> <i class="fa-solid fa-calendar-check text-[10px]"></i>
         </button>
 
-        <!-- Menu Hamburger / 3 Points -->
-        <button onclick="openMenuModal()" class="w-10 h-10 rounded-full bg-dark-850 border border-white/10 text-white hover:border-brand-magenta flex items-center justify-center text-sm transition">
+        <!-- Menu Hamburger -->
+        <button onclick="openMenuModal()" class="w-10 h-10 rounded-full bg-night-850 border border-white/10 text-champagne-300 hover:text-white hover:border-champagne-400/40 flex items-center justify-center text-sm transition">
           <i class="fa-solid fa-bars"></i>
         </button>
       </div>
     </div>
   </nav>
 
-  <!-- HERO SECTION ULTRA IMMERSIVE -->
-  <header class="relative min-h-[92vh] flex items-center justify-center pt-24 overflow-hidden">
-    <!-- Image de fond sombre tropicale & lounge -->
+  <!-- HERO SECTION AVEC FOND CHALEUREUX -->
+  <header class="relative min-h-[92vh] flex items-center justify-center pt-24 pb-12 overflow-hidden">
+    <!-- Image d'ambiance avec filtre nuit chaleureux -->
     <div class="absolute inset-0 z-0">
       <img src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&w=1920&q=80" 
-           alt="Ambiance DaVinci Lounge" 
-           class="w-full h-full object-cover opacity-35 filter brightness-90">
-      <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/60 to-transparent"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-dark-950/70 via-transparent to-dark-950"></div>
+           alt="Ambiance feutrée DaVinci" 
+           class="w-full h-full object-cover opacity-25 filter brightness-90">
+      <div class="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/70 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-night-950/80 via-transparent to-night-950"></div>
     </div>
 
-    <div class="relative z-10 max-w-4xl mx-auto text-left sm:text-center px-6">
+    <div class="relative z-10 max-w-4xl mx-auto text-center px-6">
       
-      <!-- Titre choc façon Carré VIP -->
-      <h1 class="text-5xl sm:text-7xl md:text-8xl font-headline tracking-tight text-white uppercase leading-[0.9] mb-4">
-        L'EXPÉRIENCE LOUNGE <br>
-        <span class="text-gradient">QUI NE S'ARRÊTE JAMAIS</span>
-      </h1>
-
-      <p class="text-gray-300 text-sm sm:text-lg max-w-2xl sm:mx-auto font-light leading-relaxed mb-8">
-        Restaurant raffiné, grillades au feu de bois, cocktails signatures & terrasse chill — l'adresse incontournable et festive de Rufisque.
-      </p>
-      
-      <!-- Bouton d'action principal -->
-      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4">
-        <button onclick="openBookingModal()" class="btn-vip py-4 px-8 rounded-full text-white font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-3">
-          <span>RÉSERVER UNE TABLE</span>
-          <i class="fa-solid fa-arrow-right"></i>
-        </button>
-
-        <button onclick="openMenuModal()" class="bg-dark-900/80 hover:bg-dark-850 border border-white/20 hover:border-brand-magenta py-4 px-8 rounded-full text-white font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 backdrop-blur-md transition">
-          <i class="fa-solid fa-book-open text-brand-magenta"></i>
-          <span>LA CARTE COMPLÈTE</span>
-        </button>
+      <!-- Pastille discrète -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-champagne-400/25 bg-champagne-500/10 text-champagne-300 text-[11px] tracking-[0.2em] uppercase mb-6 backdrop-blur-md">
+        <i class="fa-solid fa-star text-[10px] text-champagne-400"></i> Rufisque &bull; 4,4 / 5 sur Google (90 avis)
       </div>
 
-      <!-- Rubrique du bas : RESTAURANT / TAPAS / LOUNGE / CLUB -->
-      <div class="mt-14 pt-8 border-t border-white/10 flex flex-wrap justify-between sm:justify-center items-center gap-4 sm:gap-10 text-[11px] font-headline tracking-[0.2em] text-gray-400 uppercase">
-        <span class="text-white hover:text-brand-magenta cursor-pointer transition" onclick="openMenuModal('plats')">RESTAURANT</span>
-        <span class="text-brand-magenta">&bull;</span>
-        <span class="text-white hover:text-brand-magenta cursor-pointer transition" onclick="openMenuModal('afterwork')">AFTER WORK</span>
-        <span class="text-brand-magenta">&bull;</span>
-        <span class="text-white hover:text-brand-magenta cursor-pointer transition" onclick="openMenuModal('boissons')">COCKTAIL LOUNGE</span>
-        <span class="text-brand-magenta">&bull;</span>
-        <span class="text-white">FERMETURE 02H</span>
+      <!-- Titre noble & esthétique -->
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-serif tracking-[0.15em] text-white uppercase leading-[1.15] mb-5">
+        L'ART DE LA NUIT <br>
+        <span class="text-champagne-grad">& DE LA TABLE</span>
+      </h1>
+
+      <p class="text-gray-300/90 text-sm sm:text-base max-w-2xl mx-auto font-light leading-relaxed mb-10">
+        Une cuisine raffinée, des grillades au feu de bois, des cocktails d’exception et une terrasse intimiste sous les étoiles de Rufisque.
+      </p>
+
+      <!-- 2 GRANDS BOUTONS INTERACTIFS AVEC IMAGES EN FOND (COMME DEMANDÉ) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto mb-10">
+        
+        <!-- Bouton Carte avec photo en arrière-plan -->
+        <div onclick="openMenuModal()" class="action-card cursor-pointer h-24 rounded-2xl border border-white/10 bg-night-900 flex items-center justify-between px-6 text-left group">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" 
+               alt="La Carte" 
+               class="absolute inset-0 w-full h-full object-cover opacity-35 filter brightness-75">
+          <div class="absolute inset-0 bg-gradient-to-r from-night-950 via-night-950/70 to-transparent"></div>
+          <div class="relative z-10">
+            <span class="text-[9px] uppercase tracking-[0.25em] text-champagne-400 font-semibold block">Découvrir</span>
+            <span class="text-xl font-serif text-white tracking-[0.1em] uppercase group-hover:text-champagne-300 transition">La Carte & Les Plats</span>
+          </div>
+          <div class="relative z-10 w-9 h-9 rounded-full bg-champagne-500/20 border border-champagne-400/30 flex items-center justify-center text-champagne-300 group-hover:bg-champagne-500 group-hover:text-night-950 transition">
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </div>
+        </div>
+
+        <!-- Bouton Réservation avec photo en arrière-plan -->
+        <div onclick="openBookingModal()" class="action-card cursor-pointer h-24 rounded-2xl border border-champagne-400/30 bg-night-900 flex items-center justify-between px-6 text-left group">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" 
+               alt="Réservation" 
+               class="absolute inset-0 w-full h-full object-cover opacity-35 filter brightness-75">
+          <div class="absolute inset-0 bg-gradient-to-r from-night-950 via-night-950/70 to-transparent"></div>
+          <div class="relative z-10">
+            <span class="text-[9px] uppercase tracking-[0.25em] text-champagne-400 font-semibold block">Instantané</span>
+            <span class="text-xl font-serif text-white tracking-[0.1em] uppercase group-hover:text-champagne-300 transition">Réserver une Table</span>
+          </div>
+          <div class="relative z-10 w-9 h-9 rounded-full bg-champagne-500 text-night-950 flex items-center justify-center shadow-lg group-hover:scale-105 transition">
+            <i class="fa-solid fa-calendar-check text-xs"></i>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Badges de réassurance -->
+      <div class="flex flex-wrap justify-center items-center gap-6 text-[11px] uppercase tracking-[0.2em] text-gray-400">
+        <span><i class="fa-solid fa-check text-champagne-400 mr-2 text-[10px]"></i>Terrasse Plein Air</span>
+        <span>&bull;</span>
+        <span><i class="fa-solid fa-check text-champagne-400 mr-2 text-[10px]"></i>Salon Privé VIP</span>
+        <span>&bull;</span>
+        <span><i class="fa-solid fa-check text-champagne-400 mr-2 text-[10px]"></i>Bar & Mixologie</span>
+        <span>&bull;</span>
+        <span><i class="fa-solid fa-clock text-champagne-400 mr-2 text-[10px]"></i>Ferme à 02:00</span>
       </div>
     </div>
   </header>
 
-  <!-- COMPTEUR DE STATISTIQUES FAÇON IMAGE 3 -->
-  <section id="about" class="py-12 bg-dark-950 border-b border-white/10">
+  <!-- SECTION COMPTEUR HARMONIEUX -->
+  <section id="about" class="py-12 bg-night-900 border-y border-white/5">
     <div class="max-w-4xl mx-auto px-6">
       <div class="grid grid-cols-3 text-center gap-4">
         <div>
-          <div class="text-3xl sm:text-5xl font-headline text-brand-magenta font-bold">02H</div>
-          <div class="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-gray-400 font-semibold mt-1">OUVERT 7J/7 TARD</div>
+          <div class="text-3xl sm:text-5xl font-serif text-champagne-300 font-light">02H</div>
+          <div class="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-gray-400 font-medium mt-1">FERMETURE TARDIVE</div>
         </div>
         <div>
-          <div class="text-3xl sm:text-5xl font-headline text-white font-bold">3</div>
-          <div class="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-gray-400 font-semibold mt-1">UNIVERS & AMBIANCES</div>
+          <div class="text-3xl sm:text-5xl font-serif text-white font-light">3</div>
+          <div class="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-gray-400 font-medium mt-1">ESPACES & SALONS</div>
         </div>
         <div>
-          <div class="text-3xl sm:text-5xl font-headline text-brand-purple font-bold">4.4 ★</div>
-          <div class="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-gray-400 font-semibold mt-1">AVIS VÉRIFIÉS GOOGLE</div>
+          <div class="text-3xl sm:text-5xl font-serif text-champagne-400 font-light">4.4 ★</div>
+          <div class="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-gray-400 font-medium mt-1">AVIS GOOGLE VÉRIFIÉS</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 02 — LES ESPACES (CARTES AVEC IMAGES DE FOND IMMERSIVES) -->
+  <!-- SECTION LES ESPACES (CARTES AVEC IMAGES DE FOND NOBLES) -->
   <section id="espaces" class="py-20 max-w-7xl mx-auto px-6">
-    <div class="flex items-center gap-3 mb-4">
-      <div class="w-8 h-[2px] bg-brand-magenta"></div>
-      <span class="text-xs uppercase tracking-[0.3em] text-brand-magenta font-bold">02 &mdash; LES ESPACES</span>
+    <div class="text-center mb-14">
+      <span class="text-xs uppercase tracking-[0.3em] text-champagne-400 font-semibold">Le Lieu</span>
+      <h2 class="text-3xl sm:text-5xl font-serif text-white uppercase tracking-[0.1em] mt-2">Trois Espaces D'Exception</h2>
+      <div class="w-12 h-[1px] bg-champagne-400/50 mx-auto mt-4"></div>
     </div>
-    
-    <h2 class="text-4xl sm:text-6xl font-headline uppercase text-white tracking-wide mb-12">
-      TROIS AMBIANCES, <span class="text-gradient">UNE SEULE ADRESSE</span>
-    </h2>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       
-      <!-- Carte 1 : Terrasse -->
-      <div class="group relative rounded-3xl overflow-hidden h-96 border border-white/10 card-neon bg-dark-900 cursor-pointer" onclick="openBookingModal()">
+      <!-- Carte 1 : La Terrasse -->
+      <div onclick="openBookingModal()" class="action-card cursor-pointer rounded-3xl h-96 border border-white/10 bg-night-900 flex flex-col justify-end p-7">
         <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" 
-             alt="La Terrasse DaVinci" 
-             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60">
-        <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/20 to-transparent"></div>
-        <div class="absolute bottom-6 left-6 right-6">
-          <span class="text-[9px] uppercase tracking-widest text-brand-gold font-bold bg-black/60 px-2.5 py-1 rounded-full border border-brand-gold/30">Plein Air</span>
-          <h3 class="text-2xl font-headline uppercase text-white mt-2">LA GRANDE TERRASSE</h3>
-          <p class="text-xs text-gray-300 mt-1">Brise rafraîchissante, musique lounge & tables conviviales.</p>
+             alt="Terrasse" 
+             class="absolute inset-0 w-full h-full object-cover opacity-45 filter brightness-80">
+        <div class="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/40 to-transparent"></div>
+        <div class="relative z-10">
+          <span class="text-[10px] uppercase tracking-[0.25em] text-champagne-300 font-semibold bg-night-950/70 px-3 py-1 rounded-full border border-champagne-400/20 backdrop-blur-md">Plein Air</span>
+          <h3 class="text-2xl font-serif text-white uppercase tracking-[0.1em] mt-3">La Grande Terrasse</h3>
+          <p class="text-xs text-gray-300 mt-1 font-light leading-relaxed">Une brise agréable, des banquettes confortables et une ambiance lounge.</p>
         </div>
       </div>
 
-      <!-- Carte 2 : Salle Privée VIP -->
-      <div class="group relative rounded-3xl overflow-hidden h-96 border border-white/10 card-neon bg-dark-900 cursor-pointer" onclick="openBookingModal()">
+      <!-- Carte 2 : Salon Privé VIP -->
+      <div onclick="openBookingModal()" class="action-card cursor-pointer rounded-3xl h-96 border border-white/10 bg-night-900 flex flex-col justify-end p-7">
         <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=800&q=80" 
-             alt="Salon VIP DaVinci" 
-             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60">
-        <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/20 to-transparent"></div>
-        <div class="absolute bottom-6 left-6 right-6">
-          <span class="text-[9px] uppercase tracking-widest text-brand-magenta font-bold bg-black/60 px-2.5 py-1 rounded-full border border-brand-magenta/30">Exclusif</span>
-          <h3 class="text-2xl font-headline uppercase text-white mt-2">LE SALON PRIVÉ VIP</h3>
-          <p class="text-xs text-gray-300 mt-1">Espace climatisé pour anniversaires, dîners d'affaires et intimité.</p>
+             alt="Salon VIP" 
+             class="absolute inset-0 w-full h-full object-cover opacity-45 filter brightness-80">
+        <div class="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/40 to-transparent"></div>
+        <div class="relative z-10">
+          <span class="text-[10px] uppercase tracking-[0.25em] text-champagne-300 font-semibold bg-night-950/70 px-3 py-1 rounded-full border border-champagne-400/20 backdrop-blur-md">Confidentialité</span>
+          <h3 class="text-2xl font-serif text-white uppercase tracking-[0.1em] mt-3">Le Salon Privé VIP</h3>
+          <p class="text-xs text-gray-300 mt-1 font-light leading-relaxed">Climatisé et intimiste pour célébrations, dîners d'affaires et anniversaires.</p>
         </div>
       </div>
 
-      <!-- Carte 3 : Le Bar & Cocktails -->
-      <div class="group relative rounded-3xl overflow-hidden h-96 border border-white/10 card-neon bg-dark-900 cursor-pointer" onclick="openMenuModal('boissons')">
+      <!-- Carte 3 : Bar & Cocktails -->
+      <div onclick="openMenuModal('boissons')" class="action-card cursor-pointer rounded-3xl h-96 border border-white/10 bg-night-900 flex flex-col justify-end p-7">
         <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80" 
-             alt="Bar & Mixologie" 
-             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60">
-        <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/20 to-transparent"></div>
-        <div class="absolute bottom-6 left-6 right-6">
-          <span class="text-[9px] uppercase tracking-widest text-brand-purple font-bold bg-black/60 px-2.5 py-1 rounded-full border border-brand-purple/30">Mixologie</span>
-          <h3 class="text-2xl font-headline uppercase text-white mt-2">LE COCKTAIL BAR</h3>
-          <p class="text-xs text-gray-300 mt-1">DaVinci Bull Dog, Blue Hawaï & spiritueux sélectionnés.</p>
+             alt="Cocktails" 
+             class="absolute inset-0 w-full h-full object-cover opacity-45 filter brightness-80">
+        <div class="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/40 to-transparent"></div>
+        <div class="relative z-10">
+          <span class="text-[10px] uppercase tracking-[0.25em] text-champagne-300 font-semibold bg-night-950/70 px-3 py-1 rounded-full border border-champagne-400/20 backdrop-blur-md">Mixologie</span>
+          <h3 class="text-2xl font-serif text-white uppercase tracking-[0.1em] mt-3">Le Bar DaVinci</h3>
+          <p class="text-xs text-gray-300 mt-1 font-light leading-relaxed">Cocktails signatures, alcools nobles et créations rafraîchissantes.</p>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- BANNIÈRE MENU FAÇON APPEL À L'ACTION -->
-  <section class="py-16 bg-gradient-to-r from-dark-900 via-dark-850 to-dark-900 border-y border-white/10">
+  <!-- BANNIÈRE MENU ÉLÉGANTE -->
+  <section class="py-16 bg-gradient-to-r from-night-950 via-night-900 to-night-950 border-y border-white/5">
     <div class="max-w-4xl mx-auto px-6 text-center">
-      <span class="text-xs uppercase tracking-[0.25em] text-brand-magenta font-bold">Gastronomie & Plaisir</span>
-      <h2 class="text-4xl sm:text-6xl font-headline text-white uppercase mt-2 mb-4">Envie de consulter nos délices ?</h2>
-      <p class="text-sm text-gray-400 max-w-lg mx-auto mb-8">
-        Poisson braisé, Dibi généreux, Gambas flambées, Pizzas au feu de bois et Tapas gourmandes.
+      <span class="text-xs uppercase tracking-[0.25em] text-champagne-400 font-semibold">Gastronomie & Plaisir</span>
+      <h2 class="text-3xl sm:text-5xl font-serif text-white uppercase tracking-[0.1em] mt-2 mb-4">La Carte Gastronomique</h2>
+      <p class="text-sm text-gray-400 max-w-lg mx-auto font-light leading-relaxed mb-8">
+        Poissons braisés, dibiterie noble, gambas au miel, pizzas artisanales et tapas fines.
       </p>
-      <button onclick="openMenuModal()" class="btn-vip px-8 py-4 rounded-full text-white font-bold text-xs uppercase tracking-widest inline-flex items-center gap-3">
-        <i class="fa-solid fa-utensils"></i>
-        <span>OUVRIR LE MENU COMPLET</span>
+      <button onclick="openMenuModal()" class="btn-champagne px-8 py-3.5 rounded-full text-night-950 font-bold text-xs uppercase tracking-[0.15em] inline-flex items-center gap-3">
+        <i class="fa-solid fa-utensils text-xs"></i>
+        <span>Consulter la Carte Complète</span>
       </button>
     </div>
   </section>
 
-  <!-- CONTACT & LOCALISATION (AVEC VRAIE FICHE GOOGLE MAPS) -->
-  <section id="contact" class="py-20 bg-dark-950">
+  <!-- CONTACT & LOCALISATION AVEC CARTE OFFICIELLE -->
+  <section id="contact" class="py-20 bg-night-950">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-8 h-[2px] bg-brand-magenta"></div>
-        <span class="text-xs uppercase tracking-[0.3em] text-brand-magenta font-bold">03 &mdash; EMPLACEMENT</span>
-      </div>
-
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
-          <h2 class="text-4xl sm:text-5xl font-headline uppercase text-white tracking-wide mb-6">
-            NOUS RETROUVER <br><span class="text-gradient">À RUFISQUE</span>
+          <span class="text-xs uppercase tracking-[0.3em] text-champagne-400 font-semibold">Informations Pratiques</span>
+          <h2 class="text-3xl sm:text-4xl font-serif uppercase text-white tracking-[0.1em] mt-2 mb-6">
+            Nous Trouver À Rufisque
           </h2>
           
           <div class="space-y-6">
             <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-dark-850 border border-white/10 flex items-center justify-center text-brand-magenta shrink-0 text-xl">
+              <div class="w-11 h-11 rounded-2xl bg-night-850 border border-white/10 flex items-center justify-center text-champagne-400 shrink-0 text-lg">
                 <i class="fa-solid fa-location-dot"></i>
               </div>
               <div>
-                <h4 class="text-white font-bold text-sm uppercase tracking-wider">Adresse</h4>
-                <p class="text-sm text-gray-400 mt-0.5">DaVinci Restaurant Lounge Bar, Rufisque (Dakar)</p>
+                <h4 class="text-white font-medium text-sm">Adresse</h4>
+                <p class="text-xs text-gray-400 mt-0.5">DaVinci Restaurant Lounge Bar, Rufisque (Dakar)</p>
               </div>
             </div>
 
             <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-dark-850 border border-white/10 flex items-center justify-center text-brand-purple shrink-0 text-xl">
+              <div class="w-11 h-11 rounded-2xl bg-night-850 border border-white/10 flex items-center justify-center text-champagne-400 shrink-0 text-lg">
                 <i class="fa-solid fa-clock"></i>
               </div>
               <div>
-                <h4 class="text-white font-bold text-sm uppercase tracking-wider">Horaires</h4>
-                <p class="text-sm text-gray-400 mt-0.5">Ouvert 7j/7 &bull; Jusqu'à 02:00 du matin</p>
-                <p class="text-xs text-brand-gold mt-0.5">Service midi dès 12h &bull; After Work dès 17h</p>
+                <h4 class="text-white font-medium text-sm">Horaires d'Ouverture</h4>
+                <p class="text-xs text-gray-400 mt-0.5">Ouvert 7j/7 &bull; Jusqu'à 02:00 du matin</p>
+                <p class="text-xs text-champagne-400/80 mt-0.5">Midi dès 12h &bull; After Work dès 17h</p>
               </div>
             </div>
 
             <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-2xl bg-dark-850 border border-white/10 flex items-center justify-center text-green-400 shrink-0 text-xl">
+              <div class="w-11 h-11 rounded-2xl bg-night-850 border border-white/10 flex items-center justify-center text-champagne-400 shrink-0 text-lg">
                 <i class="fa-solid fa-phone"></i>
               </div>
               <div>
-                <h4 class="text-white font-bold text-sm uppercase tracking-wider">Contact Direct</h4>
-                <p class="text-sm text-gray-400 mt-0.5">+221 77 309 00 00</p>
+                <h4 class="text-white font-medium text-sm">Téléphone & WhatsApp</h4>
+                <p class="text-xs text-gray-400 mt-0.5">+221 77 309 00 00</p>
               </div>
             </div>
           </div>
 
           <div class="mt-8 flex flex-wrap gap-4">
-            <a href="https://maps.app.goo.gl/tGwfVDysir6upeB3A" target="_blank" class="btn-vip px-6 py-3.5 rounded-full text-white font-bold text-xs uppercase tracking-wider inline-flex items-center gap-2">
-              <i class="fa-solid fa-location-arrow"></i> Ouvrir l'Itinéraire Maps
+            <a href="https://maps.app.goo.gl/tGwfVDysir6upeB3A" target="_blank" class="btn-champagne px-6 py-3 rounded-full text-night-950 font-bold text-xs uppercase tracking-wider inline-flex items-center gap-2">
+              <i class="fa-solid fa-location-arrow"></i> Ouvrir sur Maps
             </a>
-            <a href="https://www.instagram.com/davinci.almadies2/" target="_blank" class="bg-dark-850 hover:bg-dark-800 border border-white/10 text-white px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2 transition">
-              <i class="fa-brands fa-instagram text-brand-magenta"></i> @davinci.almadies2
+            <a href="https://www.instagram.com/davinci.almadies2/" target="_blank" class="bg-night-850 hover:bg-night-800 border border-white/10 text-white px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider inline-flex items-center gap-2 transition">
+              <i class="fa-brands fa-instagram text-champagne-400"></i> @davinci.almadies2
             </a>
           </div>
         </div>
@@ -343,9 +373,9 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-dark-950 py-12 border-t border-white/5 text-center text-xs text-gray-500">
+  <footer class="bg-night-950 py-12 border-t border-white/5 text-center text-xs text-gray-500">
     <div class="max-w-7xl mx-auto px-6 space-y-3">
-      <div class="font-headline text-2xl tracking-widest text-white uppercase">DaVinci Lounge</div>
+      <div class="font-serif text-2xl tracking-[0.2em] text-champagne-200 uppercase">DaVinci</div>
       <p>&copy; 2026 DaVinci Restaurant Lounge Bar &bull; Rufisque, Sénégal.</p>
     </div>
   </footer>
@@ -353,18 +383,18 @@
   <!-- ========================================================================= -->
   <!-- 1. TIROIR MODAL : CARTE DU MENU AVEC RECHERCHE -->
   <!-- ========================================================================= -->
-  <div id="menu-overlay" onclick="closeAllModals()" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden opacity-0 transition-opacity duration-300"></div>
+  <div id="menu-overlay" onclick="closeAllModals()" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden opacity-0 transition-opacity duration-300"></div>
 
-  <div id="menu-modal" class="drawer-modal fixed top-0 right-0 w-full sm:w-[580px] md:w-[650px] h-full bg-dark-950 border-l border-white/10 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-hidden">
+  <div id="menu-modal" class="drawer-modal fixed top-0 right-0 w-full sm:w-[580px] md:w-[640px] h-full bg-night-950 border-l border-white/10 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-hidden">
     
     <!-- En-tête -->
-    <div class="p-6 border-b border-white/10 bg-dark-900 shrink-0 space-y-4">
+    <div class="p-6 border-b border-white/10 bg-night-900 shrink-0 space-y-4">
       <div class="flex items-center justify-between">
         <div>
-          <span class="text-[10px] uppercase tracking-widest text-brand-magenta font-bold">Sélection Gourmet</span>
-          <h3 class="text-3xl font-headline text-white uppercase tracking-wider mt-1">La Carte Complète</h3>
+          <span class="text-[10px] uppercase tracking-[0.25em] text-champagne-400 font-semibold">Carte Officielle</span>
+          <h3 class="text-2xl font-serif text-white uppercase tracking-[0.1em] mt-1">La Carte Gastronomique</h3>
         </div>
-        <button onclick="closeAllModals()" class="w-10 h-10 rounded-full bg-dark-850 border border-white/10 text-gray-400 hover:text-white flex items-center justify-center text-xl transition">
+        <button onclick="closeAllModals()" class="w-10 h-10 rounded-full bg-night-850 border border-white/10 text-gray-400 hover:text-white flex items-center justify-center text-xl transition">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
@@ -372,23 +402,23 @@
       <!-- Recherche instantanée -->
       <div class="relative">
         <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
-        <input type="text" id="menu-search" oninput="filterMenuItems()" placeholder="Rechercher poisson, dibi, burger, cocktail..." 
-               class="w-full bg-dark-850 border border-white/10 rounded-full pl-10 pr-4 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-brand-magenta transition">
+        <input type="text" id="menu-search" oninput="filterMenuItems()" placeholder="Rechercher un plat, poisson, cocktail..." 
+               class="w-full bg-night-850 border border-white/10 rounded-full pl-10 pr-4 py-2.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-champagne-400 transition">
       </div>
     </div>
 
     <!-- Onglets -->
-    <div class="px-6 py-3 border-b border-white/5 bg-dark-900 shrink-0 overflow-x-auto flex gap-2 no-scrollbar">
-      <button onclick="switchModalTab('plats')" id="mbtn-plats" class="modal-tab-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap bg-brand-magenta text-white shadow-md transition">
+    <div class="px-6 py-3 border-b border-white/5 bg-night-900 shrink-0 overflow-x-auto flex gap-2 no-scrollbar">
+      <button onclick="switchModalTab('plats')" id="mbtn-plats" class="modal-tab-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap bg-champagne-500 text-night-950 shadow-md transition">
         Plats & Entrées
       </button>
-      <button onclick="switchModalTab('pizzas')" id="mbtn-pizzas" class="modal-tab-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap bg-dark-800 text-gray-400 hover:text-white transition">
+      <button onclick="switchModalTab('pizzas')" id="mbtn-pizzas" class="modal-tab-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap bg-night-800 text-gray-400 hover:text-white transition">
         Pizzas & Burgers
       </button>
-      <button onclick="switchModalTab('afterwork')" id="mbtn-afterwork" class="modal-tab-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap bg-dark-800 text-gray-400 hover:text-white transition">
+      <button onclick="switchModalTab('afterwork')" id="mbtn-afterwork" class="modal-tab-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap bg-night-800 text-gray-400 hover:text-white transition">
         Tapas & Desserts
       </button>
-      <button onclick="switchModalTab('boissons')" id="mbtn-boissons" class="modal-tab-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap bg-dark-800 text-gray-400 hover:text-white transition">
+      <button onclick="switchModalTab('boissons')" id="mbtn-boissons" class="modal-tab-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider whitespace-nowrap bg-night-800 text-gray-400 hover:text-white transition">
         Bar & Cocktails
       </button>
     </div>
@@ -399,68 +429,68 @@
       <!-- SECTION PLATS -->
       <div id="mtab-plats" class="modal-content space-y-6">
         <div>
-          <h4 class="text-brand-magenta font-headline text-xl uppercase tracking-wider border-b border-white/10 pb-2 mb-3">Entrées</h4>
+          <h4 class="text-champagne-300 font-serif text-lg uppercase tracking-[0.1em] border-b border-white/10 pb-2 mb-3">Entrées</h4>
           <div class="grid grid-cols-1 gap-2.5">
-            <div class="dish-card bg-dark-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+            <div class="dish-card bg-night-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
               <div>
-                <h5 class="text-white text-sm font-semibold">Salade Cobb</h5>
+                <h5 class="text-white text-sm font-medium">Salade Cobb</h5>
                 <p class="text-xs text-gray-400 mt-0.5">Blanc de poulet, tomates cerises, œuf dur, avocat</p>
               </div>
-              <span class="text-brand-gold font-bold ml-4 text-sm">3 000 F</span>
+              <span class="text-champagne-400 font-semibold ml-4 text-sm">3 000 F</span>
             </div>
-            <div class="dish-card bg-dark-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+            <div class="dish-card bg-night-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
               <div>
-                <h5 class="text-white text-sm font-semibold">Croustillant de chèvre au miel</h5>
+                <h5 class="text-white text-sm font-medium">Croustillant de chèvre au miel</h5>
                 <p class="text-xs text-gray-400 mt-0.5">Brick dorée, fromage de chèvre onctueux, menthe fraîche</p>
               </div>
-              <span class="text-brand-gold font-bold ml-4 text-sm">3 000 F</span>
+              <span class="text-champagne-400 font-semibold ml-4 text-sm">3 000 F</span>
             </div>
           </div>
         </div>
 
         <div>
-          <h4 class="text-brand-magenta font-headline text-xl uppercase tracking-wider border-b border-white/10 pb-2 mb-3">Viandes & Braisés</h4>
+          <h4 class="text-champagne-300 font-serif text-lg uppercase tracking-[0.1em] border-b border-white/10 pb-2 mb-3">Viandes & Braisés</h4>
           <div class="grid grid-cols-1 gap-2.5">
-            <div class="dish-card bg-dark-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+            <div class="dish-card bg-night-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
               <div>
-                <h5 class="text-white text-sm font-semibold">Filet de Bœuf Tendre</h5>
+                <h5 class="text-white text-sm font-medium">Filet de Bœuf Tendre</h5>
                 <p class="text-xs text-gray-400 mt-0.5">Pièce de premier choix grillée selon votre goût</p>
               </div>
-              <span class="text-brand-gold font-bold ml-4 text-sm">7 000 F</span>
+              <span class="text-champagne-400 font-semibold ml-4 text-sm">7 000 F</span>
             </div>
-            <div class="dish-card bg-dark-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+            <div class="dish-card bg-night-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
               <div>
-                <h5 class="text-white text-sm font-semibold">Dibi Porc Spécial (500g)</h5>
-                <p class="text-xs text-gray-400 mt-0.5">Demi-kilo mariné et cuit au feu de bois avec oignons moutardés</p>
+                <h5 class="text-white text-sm font-medium">Dibi Porc Spécial (500g)</h5>
+                <p class="text-xs text-gray-400 mt-0.5">Demi-kilo mariné et cuit au feu de bois</p>
               </div>
-              <span class="text-brand-gold font-bold ml-4 text-sm">6 000 F</span>
+              <span class="text-champagne-400 font-semibold ml-4 text-sm">6 000 F</span>
             </div>
-            <div class="dish-card bg-dark-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+            <div class="dish-card bg-night-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
               <div>
-                <h5 class="text-white text-sm font-semibold">1/2 Poulet Braisé DaVinci</h5>
+                <h5 class="text-white text-sm font-medium">1/2 Poulet Braisé DaVinci</h5>
                 <p class="text-xs text-gray-400 mt-0.5">Cuisse & blanc braisés dorés</p>
               </div>
-              <span class="text-brand-gold font-bold ml-4 text-sm">5 000 F</span>
+              <span class="text-champagne-400 font-semibold ml-4 text-sm">5 000 F</span>
             </div>
           </div>
         </div>
 
         <div>
-          <h4 class="text-brand-magenta font-headline text-xl uppercase tracking-wider border-b border-white/10 pb-2 mb-3">Poissons & Mer</h4>
+          <h4 class="text-champagne-300 font-serif text-lg uppercase tracking-[0.1em] border-b border-white/10 pb-2 mb-3">Poissons & Mer</h4>
           <div class="grid grid-cols-1 gap-2.5">
-            <div class="dish-card bg-dark-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+            <div class="dish-card bg-night-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
               <div>
-                <h5 class="text-white text-sm font-semibold">Poisson Braisé Entier</h5>
+                <h5 class="text-white text-sm font-medium">Poisson Braisé Entier</h5>
                 <p class="text-xs text-gray-400 mt-0.5">Poisson du jour braisé avec marinade sénégalaise</p>
               </div>
-              <span class="text-brand-gold font-bold ml-4 text-sm">6 000 F</span>
+              <span class="text-champagne-400 font-semibold ml-4 text-sm">6 000 F</span>
             </div>
-            <div class="dish-card bg-dark-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+            <div class="dish-card bg-night-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
               <div>
-                <h5 class="text-white text-sm font-semibold">Gambas au Miel & Gingembre</h5>
+                <h5 class="text-white text-sm font-medium">Gambas au Miel & Gingembre</h5>
                 <p class="text-xs text-gray-400 mt-0.5">Grosses gambas fraîches poêlées</p>
               </div>
-              <span class="text-brand-gold font-bold ml-4 text-sm">7 000 F</span>
+              <span class="text-champagne-400 font-semibold ml-4 text-sm">7 000 F</span>
             </div>
           </div>
         </div>
@@ -469,41 +499,41 @@
       <!-- SECTION PIZZAS -->
       <div id="mtab-pizzas" class="modal-content space-y-6 hidden">
         <div>
-          <h4 class="text-brand-magenta font-headline text-xl uppercase tracking-wider border-b border-white/10 pb-2 mb-3">Pizzas</h4>
+          <h4 class="text-champagne-300 font-serif text-lg uppercase tracking-[0.1em] border-b border-white/10 pb-2 mb-3">Pizzas</h4>
           <div class="grid grid-cols-1 gap-2.5">
-            <div class="dish-card bg-dark-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+            <div class="dish-card bg-night-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
               <div>
-                <h5 class="text-white text-sm font-semibold">Pizza Signature DaVinci</h5>
+                <h5 class="text-white text-sm font-medium">Pizza Signature DaVinci</h5>
                 <p class="text-xs text-gray-400 mt-0.5">Sauce tomate, mozzarella, poulet fumé, buffala</p>
               </div>
-              <span class="text-brand-gold font-bold ml-4 text-sm">6 000 F</span>
+              <span class="text-champagne-400 font-semibold ml-4 text-sm">6 000 F</span>
             </div>
-            <div class="dish-card bg-dark-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+            <div class="dish-card bg-night-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
               <div>
-                <h5 class="text-white text-sm font-semibold">Pizza Fruits de Mer</h5>
+                <h5 class="text-white text-sm font-medium">Pizza Fruits de Mer</h5>
                 <p class="text-xs text-gray-400 mt-0.5">Crevettes, calamars, moules</p>
               </div>
-              <span class="text-brand-gold font-bold ml-4 text-sm">6 000 F</span>
+              <span class="text-champagne-400 font-semibold ml-4 text-sm">6 000 F</span>
             </div>
           </div>
         </div>
 
         <div>
-          <h4 class="text-brand-magenta font-headline text-xl uppercase tracking-wider border-b border-white/10 pb-2 mb-3">Burgers & Tacos (3 000 F)</h4>
+          <h4 class="text-champagne-300 font-serif text-lg uppercase tracking-[0.1em] border-b border-white/10 pb-2 mb-3">Burgers & Tacos (3 000 F)</h4>
           <div class="grid grid-cols-1 gap-2.5">
-            <div class="dish-card bg-dark-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+            <div class="dish-card bg-night-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
               <div>
-                <h5 class="text-white text-sm font-semibold">American Burger</h5>
+                <h5 class="text-white text-sm font-medium">American Burger</h5>
                 <p class="text-xs text-gray-400 mt-0.5">Steak haché, double cheddar fondu, oignons caramélisés</p>
               </div>
-              <span class="text-brand-gold font-bold ml-4 text-sm">3 000 F</span>
+              <span class="text-champagne-400 font-semibold ml-4 text-sm">3 000 F</span>
             </div>
-            <div class="dish-card bg-dark-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+            <div class="dish-card bg-night-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
               <div>
-                <h5 class="text-white text-sm font-semibold">Tacos Poulet Gratiné</h5>
+                <h5 class="text-white text-sm font-medium">Tacos Poulet Gratiné</h5>
                 <p class="text-xs text-gray-400 mt-0.5">Sauce fromagère maison</p>
               </div>
-              <span class="text-brand-gold font-bold ml-4 text-sm">3 000 F</span>
+              <span class="text-champagne-400 font-semibold ml-4 text-sm">3 000 F</span>
             </div>
           </div>
         </div>
@@ -512,22 +542,22 @@
       <!-- SECTION TAPAS -->
       <div id="mtab-afterwork" class="modal-content space-y-6 hidden">
         <div>
-          <h4 class="text-brand-magenta font-headline text-xl uppercase tracking-wider border-b border-white/10 pb-2 mb-3">Tapas</h4>
+          <h4 class="text-champagne-300 font-serif text-lg uppercase tracking-[0.1em] border-b border-white/10 pb-2 mb-3">Tapas</h4>
           <div class="grid grid-cols-1 gap-2.5">
-            <div class="dish-card bg-dark-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
-              <div><h5 class="text-white text-sm font-semibold">Fataya Viande (6 pcs)</h5></div>
-              <span class="text-brand-gold font-bold ml-4 text-sm">3 000 F</span>
+            <div class="dish-card bg-night-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+              <div><h5 class="text-white text-sm font-medium">Fataya Viande (6 pcs)</h5></div>
+              <span class="text-champagne-400 font-semibold ml-4 text-sm">3 000 F</span>
             </div>
-            <div class="dish-card bg-dark-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
-              <div><h5 class="text-white text-sm font-semibold">Nems Croustillants (6 pcs)</h5></div>
-              <span class="text-brand-gold font-bold ml-4 text-sm">3 000 F</span>
+            <div class="dish-card bg-night-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+              <div><h5 class="text-white text-sm font-medium">Nems Croustillants (6 pcs)</h5></div>
+              <span class="text-champagne-400 font-semibold ml-4 text-sm">3 000 F</span>
             </div>
-            <div class="dish-card bg-dark-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+            <div class="dish-card bg-night-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
               <div>
-                <h5 class="text-white text-sm font-semibold">Assiette Mixte DaVinci</h5>
+                <h5 class="text-white text-sm font-medium">Assiette Mixte DaVinci</h5>
                 <p class="text-xs text-gray-400 mt-0.5">Fatayas, nems, brochettes & gambas</p>
               </div>
-              <span class="text-brand-gold font-bold ml-4 text-sm">7 000 F</span>
+              <span class="text-champagne-400 font-semibold ml-4 text-sm">7 000 F</span>
             </div>
           </div>
         </div>
@@ -536,27 +566,28 @@
       <!-- SECTION BAR -->
       <div id="mtab-boissons" class="modal-content space-y-6 hidden">
         <div>
-          <h4 class="text-brand-magenta font-headline text-xl uppercase tracking-wider border-b border-white/10 pb-2 mb-3">Cocktails Signatures</h4>
+          <h4 class="text-champagne-300 font-serif text-lg uppercase tracking-[0.1em] border-b border-white/10 pb-2 mb-3">Cocktails Signatures</h4>
           <div class="grid grid-cols-1 gap-2.5">
-            <div class="dish-card bg-dark-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+            <div class="dish-card bg-night-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
               <div>
-                <h5 class="text-white text-sm font-semibold">DaVinci Bull Dog</h5>
+                <h5 class="text-white text-sm font-medium">DaVinci Bull Dog</h5>
                 <p class="text-xs text-gray-400 mt-0.5">Téquila, cointreau, citron vert, desperados</p>
               </div>
-              <span class="text-brand-gold font-bold ml-4 text-sm">6 500 F</span>
+              <span class="text-champagne-400 font-semibold ml-4 text-sm">6 500 F</span>
             </div>
-            <div class="dish-card bg-dark-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+            <div class="dish-card bg-night-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
               <div>
-                <h5 class="text-white text-sm font-semibold">Blue Hawaï</h5>
+                <h5 class="text-white text-sm font-medium">Blue Hawaï</h5>
                 <p class="text-xs text-gray-400 mt-0.5">Vodka, curaçao bleu, jus d'ananas</p>
               </div>
-              <span class="text-brand-gold font-bold ml-4 text-sm">5 000 F</span>
+              <span class="text-champagne-400 font-semibold ml-4 text-sm">5 000 F</span>
             </div>
-            <div class="dish-card bg-dark-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
+            <div class="dish-card bg-night-900 p-4 rounded-2xl border border-white/5 flex items-center justify-between">
               <div>
-                <h5 class="text-white text-sm font-semibold">Jus Naturels (Bissap, Bouye, Ditakh)</h5>
+                <h5 class="text-white text-sm font-medium">Jus Naturels Locaux</h5>
+                <p class="text-xs text-gray-400 mt-0.5">Bissap, Bouye ou Ditakh frais glacé</p>
               </div>
-              <span class="text-brand-gold font-bold ml-4 text-sm">1 500 F</span>
+              <span class="text-champagne-400 font-semibold ml-4 text-sm">1 500 F</span>
             </div>
           </div>
         </div>
@@ -564,11 +595,11 @@
 
     </div>
 
-    <!-- Bas du tiroir avec redirection réservation -->
-    <div class="p-6 border-t border-white/10 bg-dark-900 shrink-0">
-      <button onclick="closeAllModals(); openBookingModal();" class="btn-vip w-full py-4 rounded-full text-white font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2">
+    <!-- Bas du tiroir -->
+    <div class="p-6 border-t border-white/10 bg-night-900 shrink-0">
+      <button onclick="closeAllModals(); openBookingModal();" class="btn-champagne w-full py-3.5 rounded-full text-night-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2">
         <i class="fa-solid fa-calendar-check"></i>
-        <span>RÉSERVER UNE TABLE POUR GOÛTER</span>
+        <span>Réserver une table maintenant</span>
       </button>
     </div>
   </div>
@@ -577,14 +608,14 @@
   <!-- ========================================================================= -->
   <!-- 2. TIROIR MODAL : LA RÉSERVATION DIRECTE PAR WHATSAPP -->
   <!-- ========================================================================= -->
-  <div id="booking-modal" class="drawer-modal fixed top-0 right-0 w-full sm:w-[540px] h-full bg-dark-950 border-l border-white/10 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-hidden">
+  <div id="booking-modal" class="drawer-modal fixed top-0 right-0 w-full sm:w-[540px] h-full bg-night-950 border-l border-white/10 z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-hidden">
     
-    <div class="p-6 border-b border-white/10 bg-dark-900 shrink-0 flex items-center justify-between">
+    <div class="p-6 border-b border-white/10 bg-night-900 shrink-0 flex items-center justify-between">
       <div>
-        <span class="text-[10px] uppercase tracking-widest text-brand-magenta font-bold">Confirmation Instantanée</span>
-        <h3 class="text-3xl font-headline text-white uppercase tracking-wider mt-1">RÉSERVER VOTRE TABLE</h3>
+        <span class="text-[10px] uppercase tracking-[0.25em] text-champagne-400 font-semibold">Confirmation Rapide</span>
+        <h3 class="text-2xl font-serif text-white uppercase tracking-[0.1em] mt-1">Réserver Votre Table</h3>
       </div>
-      <button onclick="closeAllModals()" class="w-10 h-10 rounded-full bg-dark-850 border border-white/10 text-gray-400 hover:text-white flex items-center justify-center text-xl transition">
+      <button onclick="closeAllModals()" class="w-10 h-10 rounded-full bg-night-850 border border-white/10 text-gray-400 hover:text-white flex items-center justify-center text-xl transition">
         <i class="fa-solid fa-xmark"></i>
       </button>
     </div>
@@ -593,26 +624,26 @@
       <form id="booking-form" onsubmit="handleReservation(event)" class="space-y-6">
         
         <div>
-          <label class="block text-xs uppercase tracking-wider text-gray-400 font-bold mb-2">Votre Nom & Prénom *</label>
+          <label class="block text-xs uppercase tracking-wider text-gray-400 font-medium mb-2">Votre Nom & Prénom *</label>
           <input type="text" id="guest-name" required placeholder="Ex: Jean Mendy" 
-                 class="w-full bg-dark-850 border border-white/10 rounded-2xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-brand-magenta transition text-sm">
+                 class="w-full bg-night-850 border border-white/10 rounded-2xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-champagne-400 transition text-sm">
         </div>
 
         <div>
-          <label class="block text-xs uppercase tracking-wider text-gray-400 font-bold mb-2">Numéro de Téléphone *</label>
+          <label class="block text-xs uppercase tracking-wider text-gray-400 font-medium mb-2">Numéro de Téléphone *</label>
           <input type="tel" id="guest-phone" required placeholder="Ex: 77 123 45 67" 
-                 class="w-full bg-dark-850 border border-white/10 rounded-2xl px-4 py-3.5 text-white placeholder-gray-500 focus:outline-none focus:border-brand-magenta transition text-sm">
+                 class="w-full bg-night-850 border border-white/10 rounded-2xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-champagne-400 transition text-sm">
         </div>
 
         <div class="grid grid-cols-2 gap-4">
           <div>
-            <label class="block text-xs uppercase tracking-wider text-gray-400 font-bold mb-2">Date *</label>
+            <label class="block text-xs uppercase tracking-wider text-gray-400 font-medium mb-2">Date *</label>
             <input type="date" id="guest-date" required 
-                   class="w-full bg-dark-850 border border-white/10 rounded-2xl px-4 py-3.5 text-white focus:outline-none focus:border-brand-magenta transition text-sm">
+                   class="w-full bg-night-850 border border-white/10 rounded-2xl px-4 py-3 text-white focus:outline-none focus:border-champagne-400 transition text-sm">
           </div>
           <div>
-            <label class="block text-xs uppercase tracking-wider text-gray-400 font-bold mb-2">Heure *</label>
-            <select id="guest-time" required class="w-full bg-dark-850 border border-white/10 rounded-2xl px-4 py-3.5 text-white focus:outline-none focus:border-brand-magenta transition text-sm">
+            <label class="block text-xs uppercase tracking-wider text-gray-400 font-medium mb-2">Heure *</label>
+            <select id="guest-time" required class="w-full bg-night-850 border border-white/10 rounded-2xl px-4 py-3 text-white focus:outline-none focus:border-champagne-400 transition text-sm">
               <option value="12:00">12:00 (Midi)</option>
               <option value="13:00">13:00</option>
               <option value="17:00">17:00 (After Work)</option>
@@ -626,8 +657,8 @@
         </div>
 
         <div>
-          <label class="block text-xs uppercase tracking-wider text-gray-400 font-bold mb-2">Nombre de Personnes *</label>
-          <select id="guest-people" required class="w-full bg-dark-850 border border-white/10 rounded-2xl px-4 py-3.5 text-white focus:outline-none focus:border-brand-magenta transition text-sm">
+          <label class="block text-xs uppercase tracking-wider text-gray-400 font-medium mb-2">Nombre de Personnes *</label>
+          <select id="guest-people" required class="w-full bg-night-850 border border-white/10 rounded-2xl px-4 py-3 text-white focus:outline-none focus:border-champagne-400 transition text-sm">
             <option value="1 personne">1 personne</option>
             <option value="2 personnes" selected>2 personnes</option>
             <option value="3 à 4 personnes">3 - 4 personnes</option>
@@ -637,38 +668,38 @@
         </div>
 
         <div>
-          <label class="block text-xs uppercase tracking-wider text-gray-400 font-bold mb-2">Espace souhaité</label>
+          <label class="block text-xs uppercase tracking-wider text-gray-400 font-medium mb-2">Espace souhaité</label>
           <div class="grid grid-cols-3 gap-2">
-            <label class="flex flex-col items-center justify-center p-3 rounded-2xl bg-dark-850 border border-white/10 cursor-pointer hover:border-brand-magenta transition text-center">
-              <input type="radio" name="area" value="Terrasse" checked class="accent-brand-magenta mb-1">
+            <label class="flex flex-col items-center justify-center p-3 rounded-2xl bg-night-850 border border-white/10 cursor-pointer hover:border-champagne-400 transition text-center">
+              <input type="radio" name="area" value="Terrasse" checked class="accent-champagne-500 mb-1">
               <span class="text-xs text-gray-300">Terrasse</span>
             </label>
-            <label class="flex flex-col items-center justify-center p-3 rounded-2xl bg-dark-850 border border-white/10 cursor-pointer hover:border-brand-magenta transition text-center">
-              <input type="radio" name="area" value="Salle intérieure" class="accent-brand-magenta mb-1">
+            <label class="flex flex-col items-center justify-center p-3 rounded-2xl bg-night-850 border border-white/10 cursor-pointer hover:border-champagne-400 transition text-center">
+              <input type="radio" name="area" value="Salle intérieure" class="accent-champagne-500 mb-1">
               <span class="text-xs text-gray-300">Intérieur</span>
             </label>
-            <label class="flex flex-col items-center justify-center p-3 rounded-2xl bg-dark-850 border border-white/10 cursor-pointer hover:border-brand-magenta transition text-center">
-              <input type="radio" name="area" value="Salon Privé VIP" class="accent-brand-magenta mb-1">
+            <label class="flex flex-col items-center justify-center p-3 rounded-2xl bg-night-850 border border-white/10 cursor-pointer hover:border-champagne-400 transition text-center">
+              <input type="radio" name="area" value="Salon Privé VIP" class="accent-champagne-500 mb-1">
               <span class="text-xs text-gray-300">Salon VIP</span>
             </label>
           </div>
         </div>
 
         <div>
-          <label class="block text-xs uppercase tracking-wider text-gray-400 font-bold mb-2">Remarque (Optionnel)</label>
+          <label class="block text-xs uppercase tracking-wider text-gray-400 font-medium mb-2">Remarque (Optionnel)</label>
           <textarea id="guest-notes" rows="2" placeholder="Ex: Anniversaire, gâteau, table au calme..." 
-                    class="w-full bg-dark-850 border border-white/10 rounded-2xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-magenta transition text-sm"></textarea>
+                    class="w-full bg-night-850 border border-white/10 rounded-2xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-champagne-400 transition text-sm"></textarea>
         </div>
 
-        <button type="submit" class="btn-vip w-full py-4 rounded-full text-white font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2">
+        <button type="submit" class="btn-champagne w-full py-4 rounded-full text-night-950 font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2">
           <i class="fa-brands fa-whatsapp text-lg"></i>
-          <span>ENVOYER SUR WHATSAPP</span>
+          <span>Confirmer sur WhatsApp</span>
         </button>
       </form>
     </div>
   </div>
 
-  <!-- SCRIPT LOGIQUE -->
+  <!-- SCRIPT LOGIQUE MODALS & ENVOI WHATSAPP -->
   <script>
     function openMenuModal(tabToOpen = 'plats') {
       closeAllModals();
@@ -717,8 +748,8 @@
     function switchModalTab(tabId) {
       document.querySelectorAll('.modal-content').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.modal-tab-btn').forEach(btn => {
-        btn.classList.remove('bg-brand-magenta', 'text-white');
-        btn.classList.add('bg-dark-800', 'text-gray-400');
+        btn.classList.remove('bg-champagne-500', 'text-night-950');
+        btn.classList.add('bg-night-800', 'text-gray-400');
       });
 
       const selectedContent = document.getElementById('mtab-' + tabId);
@@ -726,8 +757,8 @@
 
       if (selectedContent) selectedContent.classList.remove('hidden');
       if (selectedBtn) {
-        selectedBtn.classList.add('bg-brand-magenta', 'text-white');
-        selectedBtn.classList.remove('bg-dark-800', 'text-gray-400');
+        selectedBtn.classList.add('bg-champagne-500', 'text-night-950');
+        selectedBtn.classList.remove('bg-night-800', 'text-gray-400');
       }
     }
 
@@ -765,7 +796,7 @@
       const area = document.querySelector('input[name="area"]:checked').value;
       const notes = document.getElementById('guest-notes').value;
 
-      let text = `Bonjour DaVinci Lounge Bar,%0A%0A`;
+      let text = `Bonjour DaVinci Restaurant Lounge Bar,%0A%0A`;
       text += `Je souhaite effectuer une réservation :%0A`;
       text += `👤 *Nom :* ${encodeURIComponent(name)}%0A`;
       text += `📞 *Téléphone :* ${encodeURIComponent(phone)}%0A`;
@@ -777,7 +808,7 @@
       if (notes.trim() !== '') {
         text += `📝 *Remarque :* ${encodeURIComponent(notes)}%0A`;
       }
-      text += `%0AMerci de confirmer la disponibilité !`;
+      text += `%0AMerci de me confirmer la disponibilité !`;
 
       const whatsappUrl = `https://wa.me/221773090000?text=${text}`;
       window.open(whatsappUrl, '_blank');
