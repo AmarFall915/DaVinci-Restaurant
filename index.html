@@ -39,9 +39,6 @@
   </script>
 
   <style>
-    /* =========================================================================
-       ANIMATION DE SCINTILLEMENT DORÉ SUR LES BOUTONS (SHIMMER / GLOW)
-       ========================================================================= */
     @keyframes shimmerSwipe {
       0% { transform: translateX(-150%) rotate(25deg); }
       100% { transform: translateX(250%) rotate(25deg); }
@@ -112,7 +109,6 @@
       transform: translateY(-2px);
     }
 
-    /* Carte verticale Soul Kitchen */
     .soul-card {
       transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -128,7 +124,6 @@
       transform: scale(1.08);
     }
 
-    /* Tiroirs / Modals */
     .drawer-modal {
       transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     }
@@ -151,17 +146,15 @@
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
-  <!-- NAVBAR STYLE AURÉLIA (IMAGE 6) -->
+  <!-- NAVBAR STYLE AURÉLIA -->
   <nav class="fixed w-full z-40 bg-aurelia-black/90 backdrop-blur-xl border-b border-aurelia-border transition-all duration-300">
     <div class="max-w-7xl mx-auto px-6 lg:px-12 h-22 flex items-center justify-between">
       
-      <!-- LOGO AURÉLIA / DAVINCI -->
       <a href="#" class="flex flex-col text-left">
         <span class="text-2xl sm:text-3xl font-serif tracking-[0.25em] text-white uppercase font-normal leading-none">DaVinci</span>
         <span class="text-[8px] tracking-[0.35em] text-aurelia-gold uppercase mt-1">Restaurant &bull; Lounge Bar</span>
       </a>
 
-      <!-- Menu Desktop Links -->
       <div class="hidden lg:flex items-center space-x-9 text-[11px] uppercase tracking-[0.22em] text-gray-300 font-light">
         <a href="#home" class="text-aurelia-lightGold border-b border-aurelia-lightGold pb-0.5">Accueil</a>
         <a href="#story" class="hover:text-aurelia-lightGold transition">Notre Histoire</a>
@@ -173,13 +166,11 @@
         <a href="#contact" class="hover:text-aurelia-lightGold transition">Contact</a>
       </div>
 
-      <!-- Actions Droite avec bouton scintillant -->
       <div class="flex items-center space-x-3.5">
         <a href="https://www.instagram.com/davinci.almadies2/" target="_blank" class="w-9 h-9 rounded-full border border-aurelia-border flex items-center justify-center text-aurelia-lightGold hover:border-aurelia-gold transition" title="@davinci.almadies2">
           <i class="fa-brands fa-instagram text-sm"></i>
         </a>
 
-        <!-- Bouton scintillant Aurélia : RESERVATION -->
         <button onclick="openBookingModal()" class="btn-sparkle px-5 py-2.5 rounded-sm text-[11px] uppercase tracking-[0.2em] hidden sm:block">
           Reservation
         </button>
@@ -191,11 +182,8 @@
     </div>
   </nav>
 
-  <!-- ========================================================================= -->
-  <!-- HERO SECTION : TASTE THE MOMENT (STYLE AURÉLIA AVEC FOND SOUL KITCHEN) -->
-  <!-- ========================================================================= -->
+  <!-- HERO SECTION : TASTE THE MOMENT -->
   <header id="home" class="relative min-h-[96vh] flex items-center pt-24 pb-16 overflow-hidden">
-    <!-- Image de fond gastronomique sombre haute couture -->
     <div class="absolute inset-0 z-0">
       <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1920&q=80" 
            alt="Haute Gastronomie DaVinci" 
@@ -211,7 +199,6 @@
           Fine Dining &bull; Exceptional Experience
         </span>
         
-        <!-- Grand titre Aurélia -->
         <h1 class="text-5xl sm:text-7xl md:text-8xl font-serif text-white leading-[0.95] tracking-tight mb-6 font-normal">
           TASTE <br>
           THE <br>
@@ -222,7 +209,6 @@
           Bien plus qu'un repas — une sensation. Au DaVinci Rufisque, nous célébrons l'art culinaire d'exception avec des produits nobles, des marinades artisanales et une atmosphère feutrée.
         </p>
 
-        <!-- Bouton Scintillant avec puce fléchée Aurélia -->
         <div class="flex flex-wrap items-center gap-5">
           <button onclick="openMenuModal()" class="btn-sparkle px-7 py-3.5 rounded-sm text-xs uppercase tracking-[0.2em] flex items-center gap-3">
             <span class="w-6 h-6 rounded-full bg-aurelia-black/20 flex items-center justify-center text-[10px]">
@@ -240,9 +226,7 @@
     </div>
   </header>
 
-  <!-- ========================================================================= -->
-  <!-- SECTION TRIPTYQUE SOUL KITCHEN (CARTES VERTICALES IMMERSIVES - IMAGE 7) -->
-  <!-- ========================================================================= -->
+  <!-- SECTION TRIPTYQUE AVEC LES 3 IMAGES TAPAS (FATAYA, NEMS, BROCHETTES) -->
   <section class="py-24 bg-aurelia-charcoal border-y border-aurelia-border">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
       
@@ -254,35 +238,70 @@
           Trois Univers Singuliers
         </h2>
         <p class="text-xs text-gray-400 font-light leading-relaxed">
-          Chaque détail a été pensé pour vous faire vivre une escapade sensorielle inoubliable au bord de la presqu'île.
+          Chaque détail a été pensé pour vous faire vivre une escapade sensorielle inoubliable au DaVinci.
         </p>
       </div>
 
-      <!-- Grille des 3 colonnes verticales Soul Kitchen -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        <!-- Carte 1 : Les Entrées & Tapas -->
-        <div onclick="openMenuModal('afterwork')" class="soul-card cursor-pointer bg-aurelia-card rounded-md overflow-hidden border border-white/5 p-6 flex flex-col justify-between h-[450px] relative group">
-          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80" 
-               alt="Tapas & Entrées" 
-               class="absolute inset-0 w-full h-full object-cover filter brightness-[0.4] contrast-125">
-          <div class="absolute inset-0 bg-gradient-to-t from-aurelia-black via-aurelia-black/40 to-transparent"></div>
+        <!-- CARTE 1 : OUR TAPAS SELECTION AVEC FATAYA, NEMS & BROCHETTES -->
+        <div onclick="openMenuModal('afterwork')" class="soul-card cursor-pointer bg-aurelia-card rounded-md overflow-hidden border border-white/5 p-6 flex flex-col justify-between min-h-[460px] relative group">
+          <div class="absolute inset-0 bg-gradient-to-b from-aurelia-charcoal via-aurelia-black to-aurelia-black"></div>
           
-          <div class="relative z-10 text-right">
-            <span class="text-[9px] uppercase tracking-[0.25em] text-aurelia-lightGold bg-black/60 px-2.5 py-1 rounded border border-aurelia-border">01</span>
+          <div class="relative z-10 flex items-center justify-between">
+            <span class="text-[9px] uppercase tracking-[0.25em] text-aurelia-lightGold font-semibold">Tapas & Amuse-bouches</span>
+            <span class="text-[9px] uppercase tracking-[0.25em] text-aurelia-lightGold bg-black/60 px-2 py-0.5 rounded border border-aurelia-border">01</span>
           </div>
 
-          <div class="relative z-10 text-center">
-            <h3 class="text-2xl font-serif text-white uppercase tracking-wider mb-1">Our Tapas Selection</h3>
-            <p class="text-[11px] text-gray-300 font-light leading-relaxed mb-4">Fatayas maison, nems dorés, mini-brochettes et planches à partager.</p>
+          <!-- Les 3 images Tapas -->
+          <div class="relative z-10 grid grid-cols-3 gap-2.5 my-4">
+            <!-- Fataya -->
+            <div class="group/item text-center">
+              <div class="h-24 sm:h-28 rounded overflow-hidden border border-white/10 mb-2 relative bg-black">
+                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=400&q=80" 
+                     alt="Fatayas croustillants" 
+                     class="w-full h-full object-cover group-hover/item:scale-110 transition-transform duration-500">
+                <span class="absolute bottom-1 right-1 text-[8px] bg-black/80 text-aurelia-lightGold px-1 rounded font-bold">6 pcs</span>
+              </div>
+              <span class="text-[11px] font-serif text-white block font-medium">Fatayas</span>
+              <span class="text-[10px] text-aurelia-lightGold font-bold">3 000 F</span>
+            </div>
+
+            <!-- Nems -->
+            <div class="group/item text-center">
+              <div class="h-24 sm:h-28 rounded overflow-hidden border border-white/10 mb-2 relative bg-black">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80" 
+                     alt="Nems dorés" 
+                     class="w-full h-full object-cover group-hover/item:scale-110 transition-transform duration-500">
+                <span class="absolute bottom-1 right-1 text-[8px] bg-black/80 text-aurelia-lightGold px-1 rounded font-bold">6 pcs</span>
+              </div>
+              <span class="text-[11px] font-serif text-white block font-medium">Nems</span>
+              <span class="text-[10px] text-aurelia-lightGold font-bold">3 000 F</span>
+            </div>
+
+            <!-- Mini-brochettes -->
+            <div class="group/item text-center">
+              <div class="h-24 sm:h-28 rounded overflow-hidden border border-white/10 mb-2 relative bg-black">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=400&q=80" 
+                     alt="Mini brochettes marinées" 
+                     class="w-full h-full object-cover group-hover/item:scale-110 transition-transform duration-500">
+                <span class="absolute bottom-1 right-1 text-[8px] bg-black/80 text-aurelia-lightGold px-1 rounded font-bold">12 pcs</span>
+              </div>
+              <span class="text-[11px] font-serif text-white block font-medium">Brochettes</span>
+              <span class="text-[10px] text-aurelia-lightGold font-bold">6 000 F</span>
+            </div>
+          </div>
+
+          <div class="relative z-10 text-center pt-2 border-t border-white/5">
+            <h3 class="text-xl font-serif text-white uppercase tracking-wider mb-1">Our Tapas Selection</h3>
             <span class="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-aurelia-lightGold group-hover:underline">
-              Voir la sélection &rarr;
+              Commander au bar &rarr;
             </span>
           </div>
         </div>
 
-        <!-- Carte 2 : Les Poissons & Grillades (Explosion of Flavors) -->
-        <div onclick="openMenuModal('plats')" class="soul-card cursor-pointer bg-aurelia-card rounded-md overflow-hidden border border-white/5 p-6 flex flex-col justify-between h-[450px] relative group">
+        <!-- CARTE 2 : EXPLOSION OF FLAVORS -->
+        <div onclick="openMenuModal('plats')" class="soul-card cursor-pointer bg-aurelia-card rounded-md overflow-hidden border border-white/5 p-6 flex flex-col justify-between min-h-[460px] relative group">
           <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80" 
                alt="Poisson Braisé & Grillades" 
                class="absolute inset-0 w-full h-full object-cover filter brightness-[0.4] contrast-125">
@@ -301,8 +320,8 @@
           </div>
         </div>
 
-        <!-- Carte 3 : Le Bar & Mixologie (Signature Drinks) -->
-        <div onclick="openMenuModal('boissons')" class="soul-card cursor-pointer bg-aurelia-card rounded-md overflow-hidden border border-white/5 p-6 flex flex-col justify-between h-[450px] relative group">
+        <!-- CARTE 3 : SIGNATURE DRINKS -->
+        <div onclick="openMenuModal('boissons')" class="soul-card cursor-pointer bg-aurelia-card rounded-md overflow-hidden border border-white/5 p-6 flex flex-col justify-between min-h-[460px] relative group">
           <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80" 
                alt="Cocktails & Vins" 
                class="absolute inset-0 w-full h-full object-cover filter brightness-[0.4] contrast-125">
@@ -326,13 +345,10 @@
     </div>
   </section>
 
-  <!-- ========================================================================= -->
-  <!-- SECTION ÉDITORIALE AURÉLIA : « WHERE FOOD MEETS EMOTION » (IMAGE 6) -->
-  <!-- ========================================================================= -->
+  <!-- SECTION ÉDITORIALE AURÉLIA : « WHERE FOOD MEETS EMOTION » -->
   <section id="story" class="py-24 max-w-7xl mx-auto px-6 lg:px-12">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
       
-      <!-- Colonne 1 : Photo salle aux bougies (Image 6) -->
       <div class="lg:col-span-4 rounded-md overflow-hidden border border-white/5 min-h-[380px] relative group">
         <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" 
              alt="Salle Lounge DaVinci" 
@@ -340,7 +356,6 @@
         <div class="absolute inset-0 bg-gradient-to-t from-aurelia-black via-transparent to-transparent"></div>
       </div>
 
-      <!-- Colonne 2 : Texte Our Story (Image 6) -->
       <div class="lg:col-span-4 bg-aurelia-charcoal p-8 sm:p-10 rounded-md border border-white/5 flex flex-col justify-between text-left">
         <div>
           <span class="text-[10px] uppercase tracking-[0.3em] text-aurelia-gold font-medium mb-3 block">Our Story</span>
@@ -356,7 +371,6 @@
         </button>
       </div>
 
-      <!-- Colonne 3 : Le Chef à l'œuvre (Image 6) -->
       <div class="lg:col-span-4 bg-aurelia-charcoal p-8 sm:p-10 rounded-md border border-white/5 flex flex-col justify-between text-left relative overflow-hidden group">
         <div class="relative z-10">
           <span class="text-[10px] uppercase tracking-[0.3em] text-aurelia-gold font-medium mb-3 block">Meet The Chef</span>
@@ -377,14 +391,11 @@
     </div>
   </section>
 
-  <!-- ========================================================================= -->
-  <!-- SECTION SIGNATURE DISHES : « CULINARY MASTERPIECES » (AURÉLIA - IMAGE 6) -->
-  <!-- ========================================================================= -->
+  <!-- SECTION SIGNATURE DISHES : « CULINARY MASTERPIECES » -->
   <section id="specialties" class="py-24 bg-aurelia-charcoal border-t border-aurelia-border">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
-        <!-- Titre gauche -->
         <div class="lg:col-span-4 text-left">
           <span class="text-[10px] uppercase tracking-[0.35em] text-aurelia-gold font-medium mb-1 block">Signature Dishes</span>
           <h2 class="text-3xl sm:text-4xl font-serif text-white font-normal mb-2">Culinary Masterpieces</h2>
@@ -394,7 +405,6 @@
           </button>
         </div>
 
-        <!-- 3 Assiettes phares du milieu -->
         <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-5">
           
           <div onclick="openMenuModal('plats')" class="cursor-pointer bg-aurelia-card p-4 rounded border border-white/5 hover:border-aurelia-gold/40 transition group">
@@ -430,15 +440,12 @@
     </div>
   </section>
 
-  <!-- ========================================================================= -->
-  <!-- SECTION RÉSERVATION DIRECTE : « SECURE YOUR TABLE » (AURÉLIA - IMAGE 6) -->
-  <!-- ========================================================================= -->
+  <!-- SECTION RÉSERVATION DIRECTE : « SECURE YOUR TABLE » -->
   <section id="secure" class="py-20 max-w-7xl mx-auto px-6 lg:px-12">
     <div class="bg-gradient-to-r from-aurelia-charcoal via-aurelia-card to-aurelia-charcoal border border-aurelia-border p-8 sm:p-12 rounded-lg shadow-2xl">
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         
-        <!-- Titre gauche Aurélia -->
         <div class="lg:col-span-4 text-left">
           <span class="text-[10px] uppercase tracking-[0.35em] text-aurelia-gold font-medium mb-1 block">Reservation</span>
           <h3 class="text-3xl sm:text-4xl font-serif text-white font-normal mb-2">Secure Your Table</h3>
@@ -447,7 +454,6 @@
           </p>
         </div>
 
-        <!-- Formulaire horizontal Aurélia avec bouton scintillant -->
         <div class="lg:col-span-8">
           <form onsubmit="handleQuickBooking(event)" class="grid grid-cols-1 sm:grid-cols-4 gap-3 bg-aurelia-black/90 p-3 rounded border border-white/10">
             
@@ -490,9 +496,7 @@
     </div>
   </section>
 
-  <!-- ========================================================================= -->
-  <!-- SECTION AVIS CLIENTS GOOGLE 4.4 ★ (INTÉGRÉE ET PRESTIGIEUSE) -->
-  <!-- ========================================================================= -->
+  <!-- SECTION AVIS CLIENTS GOOGLE 4.4 ★ -->
   <section class="py-20 max-w-7xl mx-auto px-6 lg:px-12 border-t border-white/5">
     <div class="text-center mb-14">
       <div class="text-aurelia-lightGold text-sm mb-2 drop-shadow-[0_0_8px_rgba(216,171,102,0.4)]">
@@ -550,9 +554,7 @@
     </div>
   </section>
 
-  <!-- ========================================================================= -->
-  <!-- SECTION CONTACT & ACCÈS (IN THE HEART OF THE CITY - AURÉLIA - IMAGE 6) -->
-  <!-- ========================================================================= -->
+  <!-- SECTION CONTACT & ACCÈS -->
   <section id="contact" class="py-20 bg-aurelia-charcoal border-t border-aurelia-border">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -603,7 +605,7 @@
     </div>
   </section>
 
-  <!-- FOOTER AURÉLIA -->
+  <!-- FOOTER -->
   <footer class="bg-aurelia-black py-12 border-t border-white/5 text-center text-xs text-gray-500">
     <div class="max-w-7xl mx-auto px-6 space-y-3">
       <div class="font-serif text-2xl tracking-[0.25em] text-white uppercase">DaVinci</div>
@@ -612,9 +614,7 @@
     </div>
   </footer>
 
-  <!-- ========================================================================= -->
-  <!-- 1. TIROIR MODAL : CARTE DU MENU AVEC RECHERCHE EN DIRECT -->
-  <!-- ========================================================================= -->
+  <!-- TIROIR MODAL : CARTE DU MENU AVEC RECHERCHE EN DIRECT -->
   <div id="menu-overlay" onclick="closeAllModals()" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden opacity-0 transition-opacity duration-300"></div>
 
   <div id="menu-modal" class="drawer-modal fixed top-0 right-0 w-full sm:w-[580px] md:w-[640px] h-full bg-aurelia-charcoal border-l border-aurelia-border z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-hidden">
@@ -839,9 +839,7 @@
   </div>
 
 
-  <!-- ========================================================================= -->
-  <!-- 2. TIROIR MODAL : RÉSERVATION DIRECTE PAR WHATSAPP -->
-  <!-- ========================================================================= -->
+  <!-- TIROIR MODAL : RÉSERVATION DIRECTE PAR WHATSAPP -->
   <div id="booking-modal" class="drawer-modal fixed top-0 right-0 w-full sm:w-[540px] h-full bg-aurelia-charcoal border-l border-aurelia-border z-50 transform translate-x-full shadow-2xl flex flex-col justify-between overflow-hidden">
     
     <div class="p-6 border-b border-white/10 bg-aurelia-black shrink-0 flex items-center justify-between">
