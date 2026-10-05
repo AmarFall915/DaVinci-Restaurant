@@ -39,10 +39,18 @@
     }
   </script>
 </head>
-<body class="bg-dark-900 text-gray-200 font-sans antialiased selection:bg-gold-500 selection:text-white">
+<body class="bg-dark-900 text-gray-200 font-sans antialiased selection:bg-gold-500 selection:text-white pb-12">
+
+  <!-- BOUTON FLOTTANT WHATSAPP (ACCÈS RAPIDE SMARTPHONE) -->
+  <a href="https://wa.me/221773090000?text=Bonjour%20DaVinci%2C%20je%20souhaite%20avoir%20des%20informations%20ou%20r%C3%A9server%20une%20table." 
+     target="_blank" 
+     class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 active:scale-95 transition-transform duration-300 drop-shadow-[0_10px_20px_rgba(37,211,102,0.4)]"
+     title="Discuter sur WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
 
   <!-- NAVBAR -->
-  <nav class="fixed w-full z-50 bg-dark-900/90 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+  <nav class="fixed w-full z-40 bg-dark-900/90 backdrop-blur-md border-b border-white/10 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <a href="#" class="flex flex-col">
         <span class="text-2xl font-serif tracking-widest text-gold-400 font-bold uppercase">DaVinci</span>
@@ -53,13 +61,14 @@
       <div class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-wider font-medium">
         <a href="#about" class="hover:text-gold-400 transition-colors">Le Restaurant</a>
         <a href="#menu" class="hover:text-gold-400 transition-colors">Notre Carte</a>
-        <a href="#reservation" class="hover:text-gold-400 transition-colors">Réserver une table</a>
-        <a href="#contact" class="hover:text-gold-400 transition-colors">Infos & Contact</a>
+        <a href="#events" class="hover:text-gold-400 transition-colors">Événements</a>
+        <a href="#reservation" class="hover:text-gold-400 transition-colors">Réservations</a>
+        <a href="#contact" class="hover:text-gold-400 transition-colors">Contact</a>
       </div>
 
       <div class="hidden md:flex items-center space-x-4">
-        <!-- Bouton Instagram direct @davinci.almadies2 -->
-        <a href="https://www.instagram.com/davinci.almadies2/" target="_blank" class="w-10 h-10 rounded-full bg-dark-700 flex items-center justify-center text-gold-400 hover:bg-gold-500 hover:text-dark-900 transition-all" title="Nous suivre sur @davinci.almadies2">
+        <!-- Bouton Instagram direct -->
+        <a href="https://www.instagram.com/davinci.almadies2/" target="_blank" class="w-10 h-10 rounded-full bg-dark-700 flex items-center justify-center text-gold-400 hover:bg-gold-500 hover:text-dark-900 transition-all" title="@davinci.almadies2">
           <i class="fa-brands fa-instagram text-lg"></i>
         </a>
         <a href="#reservation" class="flex items-center gap-2 bg-gold-500 text-dark-900 px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider hover:bg-gold-600 transition-all duration-300">
@@ -77,9 +86,10 @@
     <div id="mobile-menu" class="hidden md:hidden bg-dark-800 border-b border-white/10 px-6 py-6 space-y-4">
       <a href="#about" class="block text-gray-300 hover:text-gold-400 text-sm uppercase">Le Restaurant</a>
       <a href="#menu" class="block text-gray-300 hover:text-gold-400 text-sm uppercase">Notre Carte</a>
+      <a href="#events" class="block text-gray-300 hover:text-gold-400 text-sm uppercase">Événements & Soirées</a>
       <a href="#reservation" class="block text-gold-400 font-semibold text-sm uppercase">Réserver une table</a>
       <a href="#contact" class="block text-gray-300 hover:text-gold-400 text-sm uppercase">Infos & Contact</a>
-      <div class="pt-2 flex items-center justify-between border-t border-white/10">
+      <div class="pt-4 flex items-center justify-between border-t border-white/10">
         <a href="https://www.instagram.com/davinci.almadies2/" target="_blank" class="text-gold-400 flex items-center gap-2 text-sm uppercase">
           <i class="fa-brands fa-instagram text-lg"></i> @davinci.almadies2
         </a>
@@ -94,20 +104,20 @@
   <header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80" 
-           alt="Ambiance DaVinci" 
+           alt="Ambiance DaVinci Lounge" 
            class="w-full h-full object-cover opacity-25 filter brightness-75">
       <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/60 to-transparent"></div>
     </div>
 
     <div class="relative z-10 max-w-4xl mx-auto text-center px-4">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-gold-400/30 bg-gold-400/10 text-gold-400 text-xs tracking-widest uppercase mb-6">
-        <i class="fa-solid fa-star text-xs"></i> 4,4 / 5 sur Google (90 avis)
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-gold-400/30 bg-gold-400/10 text-gold-400 text-xs tracking-widest uppercase mb-6">
+        <i class="fa-solid fa-star text-xs"></i> 4,4 / 5 sur Google (90 avis vérifiés)
       </div>
       <h1 class="text-4xl sm:text-6xl md:text-7xl font-serif tracking-wider font-bold text-white mb-6 uppercase">
         DaVinci <br><span class="text-gold-400 font-normal italic lowercase text-3xl sm:text-5xl">restaurant &bull; lounge bar</span>
       </h1>
       <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed mb-8">
-        Une cuisine raffinée, une ambiance feutrée, des cocktails signatures d’exception et une terrasse conviviale au cœur de Rufisque.
+        Une cuisine savoureuse, une ambiance feutrée, des cocktails signatures d’exception et une terrasse conviviale au cœur de Rufisque.
       </p>
       
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -115,19 +125,19 @@
           <i class="fa-solid fa-calendar-days mr-2"></i> Réserver une Table
         </a>
         <a href="#menu" class="w-full sm:w-auto bg-dark-700/80 hover:bg-dark-700 border border-white/20 text-white font-medium px-8 py-4 rounded-full text-sm uppercase tracking-wider transition-all">
-          Découvrir la Carte
+          Découvrir le Menu
         </a>
       </div>
 
       <!-- Badges -->
       <div class="mt-12 flex flex-wrap justify-center items-center gap-6 text-xs text-gray-400 uppercase tracking-widest">
-        <span><i class="fa-solid fa-check text-gold-400 mr-2"></i>Terrasse</span>
+        <span><i class="fa-solid fa-check text-gold-400 mr-2"></i>Terrasse Plein Air</span>
         <span>&bull;</span>
-        <span><i class="fa-solid fa-check text-gold-400 mr-2"></i>Salle Privée</span>
+        <span><i class="fa-solid fa-check text-gold-400 mr-2"></i>Salle Privée VIP</span>
         <span>&bull;</span>
         <span><i class="fa-solid fa-check text-gold-400 mr-2"></i>Excellents Cocktails</span>
         <span>&bull;</span>
-        <span><i class="fa-solid fa-clock text-gold-400 mr-2"></i>Ferme à 02:00</span>
+        <span><i class="fa-solid fa-clock text-gold-400 mr-2"></i>Ouvert jusqu'à 02:00</span>
       </div>
     </div>
   </header>
@@ -140,7 +150,7 @@
         <div class="bg-dark-700/40 p-8 rounded-2xl border border-white/5 relative overflow-hidden group hover:border-gold-400/40 transition">
           <div class="text-xs uppercase tracking-widest text-gold-400 font-semibold mb-2">Du Lundi au Vendredi &bull; Dès 12h</div>
           <h3 class="text-2xl font-serif text-white font-bold mb-2">Formule Plat du Jour</h3>
-          <p class="text-gray-400 text-sm mb-4">Savourez nos suggestions fraîches du chef pour vos pauses déjeuners.</p>
+          <p class="text-gray-400 text-sm mb-4">Savourez les suggestions fraîches du chef pour vos déjeuners express et gourmands.</p>
           <div class="text-3xl font-serif text-gold-400 font-bold">3 000 <span class="text-sm font-sans text-gray-400">FCFA</span></div>
         </div>
 
@@ -148,23 +158,70 @@
         <div class="bg-dark-700/40 p-8 rounded-2xl border border-white/5 relative overflow-hidden group hover:border-gold-400/40 transition">
           <div class="text-xs uppercase tracking-widest text-gold-400 font-semibold mb-2">Tous les jours &bull; Dès 17h</div>
           <h3 class="text-2xl font-serif text-white font-bold mb-2">After Work & Tapas</h3>
-          <p class="text-gray-400 text-sm mb-4">Détente entre amis autour de cocktails signatures et d'assiettes à partager.</p>
-          <div class="text-gray-400 text-sm">Fataya, Nems, Brochettes, Tacos...</div>
+          <p class="text-gray-400 text-sm mb-4">Détente entre amis autour de cocktails signatures et d'assiettes apéritives.</p>
+          <div class="text-gray-400 text-sm">Fataya, Nems, Brochettes, Wings...</div>
         </div>
 
         <!-- Brunch -->
         <div class="bg-dark-700/40 p-8 rounded-2xl border border-white/5 relative overflow-hidden group hover:border-gold-400/40 transition">
           <div class="text-xs uppercase tracking-widest text-gold-400 font-semibold mb-2">Samedi & Dimanche &bull; 10h30 - 17h</div>
           <h3 class="text-2xl font-serif text-white font-bold mb-2">Formules Brunch</h3>
-          <p class="text-gray-400 text-sm mb-4">Week-ends are for Brunch ! Une sélection gourmande sucrée & salée.</p>
-          <div class="text-gold-400 text-sm font-medium tracking-wide">Ambiance chill & lounge</div>
+          <p class="text-gray-400 text-sm mb-4">Week-ends are for Brunch ! Une sélection complète salée & sucrée.</p>
+          <div class="text-gold-400 text-sm font-medium tracking-wide">Ambiance chill & décontractée</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE & CADRE DU RESTAURANT -->
+  <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <p class="text-gold-400 uppercase tracking-widest text-xs font-semibold mb-2">L'Expérience DaVinci</p>
+      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white uppercase">Un Cadre Pensé Pour Vous</h2>
+      <div class="w-16 h-0.5 bg-gold-400 mx-auto mt-4"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="group relative rounded-2xl overflow-hidden h-72 border border-white/10 shadow-lg">
+        <img src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&w=600&q=80" alt="Terrasse" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent"></div>
+        <div class="absolute bottom-4 left-4 right-4">
+          <h4 class="text-white font-serif text-lg font-bold">La Terrasse</h4>
+          <p class="text-xs text-gray-300">Plein air, brise agréable & ambiance cosy</p>
+        </div>
+      </div>
+
+      <div class="group relative rounded-2xl overflow-hidden h-72 border border-white/10 shadow-lg">
+        <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=600&q=80" alt="Salle VIP" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent"></div>
+        <div class="absolute bottom-4 left-4 right-4">
+          <h4 class="text-white font-serif text-lg font-bold">Salle Privée VIP</h4>
+          <p class="text-xs text-gray-300">Intimité, climatisée pour réunions & dîners</p>
+        </div>
+      </div>
+
+      <div class="group relative rounded-2xl overflow-hidden h-72 border border-white/10 shadow-lg">
+        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80" alt="Cocktails" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent"></div>
+        <div class="absolute bottom-4 left-4 right-4">
+          <h4 class="text-white font-serif text-lg font-bold">Le Bar & Mixologie</h4>
+          <p class="text-xs text-gray-300">Cocktails créatifs & alcools fins</p>
+        </div>
+      </div>
+
+      <div class="group relative rounded-2xl overflow-hidden h-72 border border-white/10 shadow-lg">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Gastronomie" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent"></div>
+        <div class="absolute bottom-4 left-4 right-4">
+          <h4 class="text-white font-serif text-lg font-bold">Grillades & Poissons</h4>
+          <p class="text-xs text-gray-300">Braisés au feu de bois & marinades maison</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- MENU SECTION -->
-  <section id="menu" class="py-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section id="menu" class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-white/5">
     <div class="text-center mb-16">
       <p class="text-gold-400 uppercase tracking-widest text-xs font-semibold mb-2">Notre Gastronomie</p>
       <h2 class="text-4xl sm:text-5xl font-serif font-bold text-white uppercase">La Carte & Les Boissons</h2>
@@ -243,7 +300,7 @@
             <div><h4 class="font-medium text-white">Entrecôte de bœuf à la plancha</h4></div>
             <span class="text-gold-400 font-semibold ml-4">7 000 F</span>
           </div>
-          <div class="flex justify-between items-bullet items-baseline border-b border-dashed border-white/10 pb-2">
+          <div class="flex justify-between items-baseline border-b border-dashed border-white/10 pb-2">
             <div><h4 class="font-medium text-white">Côtes de porc marinées au feu de bois</h4></div>
             <span class="text-gold-400 font-semibold ml-4">6 000 F</span>
           </div>
@@ -497,13 +554,111 @@
     </div>
   </section>
 
+  <!-- ÉVÉNEMENTS & SOIRÉES LOUNGE -->
+  <section id="events" class="py-20 bg-dark-800 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <span class="text-xs uppercase tracking-widest text-gold-400 font-semibold">Nightlife & Loisirs</span>
+        <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mt-1 uppercase">Soirées & Privatisation</h2>
+        <div class="w-16 h-0.5 bg-gold-400 mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-8 rounded-2xl bg-dark-900 border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center text-xl mb-4">
+              <i class="fa-solid fa-music"></i>
+            </div>
+            <h3 class="text-xl font-serif font-bold text-white mb-2">DJ Sets & Live Acoustique</h3>
+            <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">Profitez de nos week-ends animés avec les meilleurs rythmes afrobeats, deep house et lounge jusqu'à 02h00.</p>
+          </div>
+          <span class="text-xs uppercase tracking-widest text-gold-400 font-medium mt-6 block">Tous les vendredis & samedis</span>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-dark-900 border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center text-xl mb-4">
+              <i class="fa-solid fa-futbol"></i>
+            </div>
+            <h3 class="text-xl font-serif font-bold text-white mb-2">Soirées Matchs & Football</h3>
+            <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">Diffusion sur écrans géants de la Ligue des Champions et grands derbys dans une ambiance électrique.</p>
+          </div>
+          <span class="text-xs uppercase tracking-widest text-gold-400 font-medium mt-6 block">Écrans HD & Bar actif</span>
+        </div>
+
+        <div class="p-8 rounded-2xl bg-dark-900 border border-white/10 flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center text-xl mb-4">
+              <i class="fa-solid fa-champagne-glasses"></i>
+            </div>
+            <h3 class="text-xl font-serif font-bold text-white mb-2">Anniversaires & Privatisation</h3>
+            <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">Célébrez vos événements privés ou repas d’entreprise dans notre salle privée VIP avec service sur mesure.</p>
+          </div>
+          <a href="#reservation" class="text-xs uppercase tracking-widest text-gold-400 font-semibold mt-6 inline-flex items-center gap-1 hover:underline">
+            Réserver l'espace privé <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVIS CLIENTS & SOCIAL PROOF GOOGLE -->
+  <section class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14">
+      <div class="inline-flex items-center gap-1 text-gold-400 text-lg mb-2">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star-half-stroke"></i>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white uppercase">Ce Que Disent Nos Clients</h2>
+      <p class="text-xs text-gray-400 mt-1">Note moyenne de 4,4/5 basée sur plus de 90 avis vérifiés sur Google Maps</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="p-6 rounded-2xl bg-dark-800 border border-white/5 relative">
+        <p class="text-sm text-gray-300 italic mb-6">« Cadre magnifique et reposant à Rufisque. Le poisson braisé est d'une tendresse incroyable et les cocktails signatures valent le détour ! »</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-gold-500 text-dark-900 font-bold flex items-center justify-center text-xs">MD</div>
+          <div>
+            <h5 class="text-sm font-semibold text-white">Mamadou D.</h5>
+            <span class="text-[11px] text-gray-400">Client Google &bull; Rufisque</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-dark-800 border border-white/5 relative">
+        <p class="text-sm text-gray-300 italic mb-6">« Service rapide et très accueillant. La formule After Work avec les tapas et le cocktail DaVinci était top pour un débrief entre collègues. »</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-gold-500 text-dark-900 font-bold flex items-center justify-center text-xs">AS</div>
+          <div>
+            <h5 class="text-sm font-semibold text-white">Awa S.</h5>
+            <span class="text-[11px] text-gray-400">Cliente Google &bull; Dakar</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-dark-800 border border-white/5 relative">
+        <p class="text-sm text-gray-300 italic mb-6">« Très belle terrasse pour les soirées tardives. Musique bien dosée et salle privée très agréable pour organiser un anniversaire. Je recommande vivement ! »</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-gold-500 text-dark-900 font-bold flex items-center justify-center text-xs">IN</div>
+          <div>
+            <h5 class="text-sm font-semibold text-white">Ibrahima N.</h5>
+            <span class="text-[11px] text-gray-400">Client Google &bull; Rufisque</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FORMULAIRE DE RÉSERVATION DIRECT SUR LE SITE -->
   <section id="reservation" class="py-24 bg-dark-800 border-y border-white/5 relative">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
       <div class="text-center mb-12">
         <span class="text-xs uppercase tracking-widest text-gold-400 font-semibold">Réservation en direct</span>
         <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mt-1 uppercase">Réserver une Table</h2>
-        <p class="text-sm text-gray-400 mt-2">Remplissez le formulaire ci-dessous pour confirmer instantanément votre venue sur notre WhatsApp.</p>
+        <p class="text-sm text-gray-400 mt-2">Remplissez le formulaire ci-dessous pour confirmer instantanément votre table sur notre WhatsApp.</p>
         <div class="w-16 h-0.5 bg-gold-400 mx-auto mt-4"></div>
       </div>
 
@@ -527,7 +682,7 @@
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <!-- Date -->
+            <!-- Date intelligente -->
             <div>
               <label class="block text-xs uppercase tracking-wider text-gray-300 font-semibold mb-2">Date *</label>
               <input type="date" id="guest-date" required 
@@ -576,8 +731,8 @@
                 <span class="text-xs sm:text-sm text-gray-300">Salle Climatisée</span>
               </label>
               <label class="flex items-center gap-2 bg-dark-800 border border-white/10 p-3 rounded-xl cursor-pointer hover:border-gold-400 transition">
-                <input type="radio" name="area" value="Salle privée" class="accent-gold-500">
-                <span class="text-xs sm:text-sm text-gray-300">Salle Privée</span>
+                <input type="radio" name="area" value="Salle privée VIP" class="accent-gold-500">
+                <span class="text-xs sm:text-sm text-gray-300">Salle Privée VIP</span>
               </label>
             </div>
           </div>
@@ -585,7 +740,7 @@
           <!-- Message additionnel -->
           <div>
             <label class="block text-xs uppercase tracking-wider text-gray-300 font-semibold mb-2">Remarque particulière (Optionnel)</label>
-            <textarea id="guest-notes" rows="2" placeholder="Ex: Anniversaire, table au calme..." 
+            <textarea id="guest-notes" rows="2" placeholder="Ex: Anniversaire, gâteau, table au calme..." 
                       class="w-full bg-dark-800 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-gold-400 transition"></textarea>
           </div>
 
@@ -598,7 +753,7 @@
     </div>
   </section>
 
-  <!-- INSTAGRAM BANNER SECTION (Reliée à @davinci.almadies2) -->
+  <!-- INSTAGRAM BANNER SECTION -->
   <section class="py-16 bg-gradient-to-r from-dark-900 via-dark-800 to-dark-900 border-b border-white/10">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 flex items-center justify-center mx-auto mb-4 text-white text-3xl shadow-lg">
@@ -606,9 +761,9 @@
       </div>
       <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-1 uppercase">Suivez l'ambiance sur Instagram</h3>
       <p class="text-gold-400 font-semibold text-base mb-2">@davinci.almadies2</p>
-      <p class="text-sm text-gray-400 mb-6 max-w-lg mx-auto">Retrouvez nos soirées en direct, nos créations cocktails et toutes nos nouveautés en stories quotidiennes.</p>
+      <p class="text-sm text-gray-400 mb-6 max-w-lg mx-auto">Retrouvez nos soirées en direct, nos cocktails en préparation et toutes nos nouveautés en stories quotidiennes.</p>
       <a href="https://www.instagram.com/davinci.almadies2/" target="_blank" class="inline-flex items-center gap-2 border border-gold-500/60 text-gold-400 hover:bg-gold-500 hover:text-dark-900 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300">
-        <i class="fa-brands fa-instagram text-base"></i> Voir le profil @davinci.almadies2
+        <i class="fa-brands fa-instagram text-base"></i> Rejoindre la communauté @davinci.almadies2
       </a>
     </div>
   </section>
@@ -692,8 +847,16 @@
     </div>
   </footer>
 
-  <!-- SCRIPT TABS, MOBILE MENU & RESERVATION LOGIC -->
+  <!-- JAVASCRIPT : TABS, MOBILE MENU, DATES & RÉSERVATION -->
   <script>
+    // Configuration intelligente de la date minimale (Aujourd'hui)
+    document.addEventListener("DOMContentLoaded", () => {
+      const dateInput = document.getElementById('guest-date');
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.min = today;
+      dateInput.value = today;
+    });
+
     // Onglets de navigation dans le menu
     function switchTab(tabId) {
       document.querySelectorAll('.menu-content').forEach(el => el.classList.add('hidden'));
