@@ -112,7 +112,7 @@
       transform: translateY(-2px);
     }
 
-    /* Cartes verticales immersives */
+    /* Cartes verticales */
     .soul-card {
       transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -128,7 +128,7 @@
       transform: scale(1.08);
     }
 
-    /* Tiroirs / Modals */
+    /* Modals tiroirs */
     .drawer-modal {
       transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     }
@@ -138,6 +138,43 @@
     .custom-scroll::-webkit-scrollbar-thumb {
       background: linear-gradient(to bottom, #f7deaf, #a87932);
       border-radius: 9999px;
+    }
+
+    /* =========================================================================
+       SYSTÈME SCROLL REVEAL (FADE-IN + SLIDE-UP + SUBTLE ZOOM HAUTE GASTRONOMIE)
+       ========================================================================= */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-zoom {
+      opacity: 0;
+      transform: translateY(24px) scale(0.97);
+      transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1), transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    /* État actif déclenché par l'observateur */
+    .reveal-active {
+      opacity: 1 !important;
+      transform: translateY(0) scale(1) !important;
+    }
+
+    /* Délais étagés pour apparition en cascade (Stagger effect) */
+    .delay-100 { transition-delay: 0.1s; }
+    .delay-200 { transition-delay: 0.2s; }
+    .delay-300 { transition-delay: 0.3s; }
+    .delay-400 { transition-delay: 0.4s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal-item, .reveal-zoom {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
     }
   </style>
 </head>
@@ -195,7 +232,6 @@
   <!-- HERO SECTION : SAVOUREZ L'INSTANT -->
   <!-- ========================================================================= -->
   <header id="home" class="relative min-h-[96vh] flex items-center pt-24 pb-16 overflow-hidden">
-    <!-- Image de fond gastronomique sombre -->
     <div class="absolute inset-0 z-0">
       <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1920&q=80" 
            alt="Haute Gastronomie DaVinci" 
@@ -207,23 +243,21 @@
     <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full">
       <div class="max-w-2xl text-left">
         
-        <span class="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-aurelia-lightGold font-medium mb-3 block">
+        <span class="reveal-item text-[10px] sm:text-xs uppercase tracking-[0.35em] text-aurelia-lightGold font-medium mb-3 block">
           Haute Gastronomie &bull; Expérience d'Exception
         </span>
         
-        <!-- Grand titre traduit -->
-        <h1 class="text-5xl sm:text-7xl md:text-8xl font-serif text-white leading-[0.95] tracking-tight mb-6 font-normal">
+        <h1 class="reveal-item delay-100 text-5xl sm:text-7xl md:text-8xl font-serif text-white leading-[0.95] tracking-tight mb-6 font-normal">
           SAVOUREZ <br>
           L'INSTANT <br>
           <span class="italic font-serif text-aurelia-lightGold drop-shadow-[0_0_15px_rgba(216,171,102,0.4)]">PRÉSENT.</span>
         </h1>
 
-        <p class="text-gray-300 text-xs sm:text-sm font-light leading-relaxed mb-10 max-w-md">
+        <p class="reveal-item delay-200 text-gray-300 text-xs sm:text-sm font-light leading-relaxed mb-10 max-w-md">
           Bien plus qu'un repas — une véritable émotion. Au DaVinci Rufisque, nous célébrons l'art culinaire d'exception avec des produits nobles, des cuissons au feu de bois et une atmosphère lounge feutrée.
         </p>
 
-        <!-- Boutons Scintillants en français -->
-        <div class="flex flex-wrap items-center gap-5">
+        <div class="reveal-item delay-300 flex flex-wrap items-center gap-5">
           <button onclick="openMenuModal()" class="btn-sparkle px-7 py-3.5 rounded-sm text-xs uppercase tracking-[0.2em] flex items-center gap-3">
             <span class="w-6 h-6 rounded-full bg-aurelia-black/20 flex items-center justify-center text-[10px]">
               <i class="fa-solid fa-arrow-right"></i>
@@ -246,7 +280,7 @@
   <section class="py-24 bg-aurelia-charcoal border-y border-aurelia-border">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
       
-      <div class="text-center max-w-xl mx-auto mb-16">
+      <div class="reveal-item text-center max-w-xl mx-auto mb-16">
         <span class="text-[10px] uppercase tracking-[0.35em] text-aurelia-gold font-medium mb-2 block">
           L'Expérience
         </span>
@@ -258,11 +292,11 @@
         </p>
       </div>
 
-      <!-- Grille des 3 colonnes verticales -->
+      <!-- Grille des 3 colonnes avec animations étagées -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
         <!-- Carte 1 : Tapas -->
-        <div onclick="openMenuModal('afterwork')" class="soul-card cursor-pointer bg-aurelia-card rounded-md overflow-hidden border border-white/5 p-6 flex flex-col justify-between h-[450px] relative group">
+        <div onclick="openMenuModal('afterwork')" class="reveal-zoom delay-100 soul-card cursor-pointer bg-aurelia-card rounded-md overflow-hidden border border-white/5 p-6 flex flex-col justify-between h-[450px] relative group">
           <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80" 
                alt="Tapas & Entrées" 
                class="absolute inset-0 w-full h-full object-cover filter brightness-[0.4] contrast-125">
@@ -282,7 +316,7 @@
         </div>
 
         <!-- Carte 2 : Poissons & Braisés -->
-        <div onclick="openMenuModal('plats')" class="soul-card cursor-pointer bg-aurelia-card rounded-md overflow-hidden border border-white/5 p-6 flex flex-col justify-between h-[450px] relative group">
+        <div onclick="openMenuModal('plats')" class="reveal-zoom delay-200 soul-card cursor-pointer bg-aurelia-card rounded-md overflow-hidden border border-white/5 p-6 flex flex-col justify-between h-[450px] relative group">
           <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80" 
                alt="Poisson Braisé & Grillades" 
                class="absolute inset-0 w-full h-full object-cover filter brightness-[0.4] contrast-125">
@@ -302,7 +336,7 @@
         </div>
 
         <!-- Carte 3 : Cocktails -->
-        <div onclick="openMenuModal('boissons')" class="soul-card cursor-pointer bg-aurelia-card rounded-md overflow-hidden border border-white/5 p-6 flex flex-col justify-between h-[450px] relative group">
+        <div onclick="openMenuModal('boissons')" class="reveal-zoom delay-300 soul-card cursor-pointer bg-aurelia-card rounded-md overflow-hidden border border-white/5 p-6 flex flex-col justify-between h-[450px] relative group">
           <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80" 
                alt="Cocktails & Vins" 
                class="absolute inset-0 w-full h-full object-cover filter brightness-[0.4] contrast-125">
@@ -333,7 +367,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
       
       <!-- Colonne 1 : Photo ambiance salle -->
-      <div class="lg:col-span-4 rounded-md overflow-hidden border border-white/5 min-h-[380px] relative group">
+      <div class="reveal-zoom lg:col-span-4 rounded-md overflow-hidden border border-white/5 min-h-[380px] relative group">
         <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" 
              alt="Salle Lounge DaVinci" 
              class="w-full h-full object-cover filter brightness-75 group-hover:scale-105 transition-transform duration-700">
@@ -341,7 +375,7 @@
       </div>
 
       <!-- Colonne 2 : Texte Notre Histoire -->
-      <div class="lg:col-span-4 bg-aurelia-charcoal p-8 sm:p-10 rounded-md border border-white/5 flex flex-col justify-between text-left">
+      <div class="reveal-item delay-100 lg:col-span-4 bg-aurelia-charcoal p-8 sm:p-10 rounded-md border border-white/5 flex flex-col justify-between text-left">
         <div>
           <span class="text-[10px] uppercase tracking-[0.3em] text-aurelia-gold font-medium mb-3 block">Notre Histoire</span>
           <h3 class="text-2xl sm:text-3xl font-serif text-white leading-snug mb-4">
@@ -357,7 +391,7 @@
       </div>
 
       <!-- Colonne 3 : Le Chef à l'œuvre -->
-      <div class="lg:col-span-4 bg-aurelia-charcoal p-8 sm:p-10 rounded-md border border-white/5 flex flex-col justify-between text-left relative overflow-hidden group">
+      <div class="reveal-item delay-200 lg:col-span-4 bg-aurelia-charcoal p-8 sm:p-10 rounded-md border border-white/5 flex flex-col justify-between text-left relative overflow-hidden group">
         <div class="relative z-10">
           <span class="text-[10px] uppercase tracking-[0.3em] text-aurelia-gold font-medium mb-3 block">Le Mot Du Chef</span>
           <h3 class="text-2xl sm:text-3xl font-serif text-white leading-snug mb-4">
@@ -385,7 +419,7 @@
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
         <!-- Titre gauche -->
-        <div class="lg:col-span-4 text-left">
+        <div class="reveal-item lg:col-span-4 text-left">
           <span class="text-[10px] uppercase tracking-[0.35em] text-aurelia-gold font-medium mb-1 block">Nos Spécialités</span>
           <h2 class="text-3xl sm:text-4xl font-serif text-white font-normal mb-2">Chefs-d'œuvre Culinaires</h2>
           <p class="text-xs text-gray-400 font-light leading-relaxed mb-4">Chaque plat est une création originale mariant fraîcheur, textures et parfums uniques.</p>
@@ -394,10 +428,10 @@
           </button>
         </div>
 
-        <!-- 3 Assiettes phares -->
+        <!-- 3 Assiettes phares avec apparition en cascade -->
         <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-5">
           
-          <div onclick="openMenuModal('plats')" class="cursor-pointer bg-aurelia-card p-4 rounded border border-white/5 hover:border-aurelia-gold/40 transition group">
+          <div onclick="openMenuModal('plats')" class="reveal-zoom delay-100 cursor-pointer bg-aurelia-card p-4 rounded border border-white/5 hover:border-aurelia-gold/40 transition group">
             <div class="h-40 rounded overflow-hidden mb-3 bg-aurelia-black">
               <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=500&q=80" alt="Filet Bœuf" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
             </div>
@@ -406,7 +440,7 @@
             <div class="text-aurelia-lightGold font-serif font-bold text-sm">7 000 FCFA</div>
           </div>
 
-          <div onclick="openMenuModal('plats')" class="cursor-pointer bg-aurelia-card p-4 rounded border border-white/5 hover:border-aurelia-gold/40 transition group">
+          <div onclick="openMenuModal('plats')" class="reveal-zoom delay-200 cursor-pointer bg-aurelia-card p-4 rounded border border-white/5 hover:border-aurelia-gold/40 transition group">
             <div class="h-40 rounded overflow-hidden mb-3 bg-aurelia-black">
               <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=500&q=80" alt="Poisson Braisé" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
             </div>
@@ -415,7 +449,7 @@
             <div class="text-aurelia-lightGold font-serif font-bold text-sm">6 000 FCFA</div>
           </div>
 
-          <div onclick="openMenuModal('boissons')" class="cursor-pointer bg-aurelia-card p-4 rounded border border-white/5 hover:border-aurelia-gold/40 transition group">
+          <div onclick="openMenuModal('boissons')" class="reveal-zoom delay-300 cursor-pointer bg-aurelia-card p-4 rounded border border-white/5 hover:border-aurelia-gold/40 transition group">
             <div class="h-40 rounded overflow-hidden mb-3 bg-aurelia-black">
               <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=500&q=80" alt="Cocktail Bull Dog" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
             </div>
@@ -434,7 +468,7 @@
   <!-- SECTION RÉSERVATION DIRECTE SUR WHATSAPP -->
   <!-- ========================================================================= -->
   <section id="secure" class="py-20 max-w-7xl mx-auto px-6 lg:px-12">
-    <div class="bg-gradient-to-r from-aurelia-charcoal via-aurelia-card to-aurelia-charcoal border border-aurelia-border p-8 sm:p-12 rounded-lg shadow-2xl">
+    <div class="reveal-item bg-gradient-to-r from-aurelia-charcoal via-aurelia-card to-aurelia-charcoal border border-aurelia-border p-8 sm:p-12 rounded-lg shadow-2xl">
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         
@@ -494,7 +528,7 @@
   <!-- SECTION AVIS CLIENTS GOOGLE (4,4 ★ SUR 90 AVIS) -->
   <!-- ========================================================================= -->
   <section class="py-20 max-w-7xl mx-auto px-6 lg:px-12 border-t border-white/5">
-    <div class="text-center mb-14">
+    <div class="reveal-item text-center mb-14">
       <div class="text-aurelia-lightGold text-sm mb-2 drop-shadow-[0_0_8px_rgba(216,171,102,0.4)]">
         <i class="fa-solid fa-star"></i>
         <i class="fa-solid fa-star"></i>
@@ -508,7 +542,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       
-      <div class="p-7 bg-aurelia-charcoal border border-aurelia-border rounded flex flex-col justify-between">
+      <div class="reveal-item delay-100 p-7 bg-aurelia-charcoal border border-aurelia-border rounded flex flex-col justify-between">
         <p class="text-xs sm:text-sm text-gray-300 italic font-light leading-relaxed mb-6">
           « Cadre magnifique et reposant à Rufisque. Le poisson braisé est d'une tendresse incroyable et les cocktails signatures valent le détour ! »
         </p>
@@ -521,7 +555,7 @@
         </div>
       </div>
 
-      <div class="p-7 bg-aurelia-charcoal border border-aurelia-border rounded flex flex-col justify-between">
+      <div class="reveal-item delay-200 p-7 bg-aurelia-charcoal border border-aurelia-border rounded flex flex-col justify-between">
         <p class="text-xs sm:text-sm text-gray-300 italic font-light leading-relaxed mb-6">
           « Service rapide et très accueillant. La formule After Work avec les tapas et le cocktail DaVinci était top pour un débrief entre collègues. »
         </p>
@@ -534,7 +568,7 @@
         </div>
       </div>
 
-      <div class="p-7 bg-aurelia-charcoal border border-aurelia-border rounded flex flex-col justify-between">
+      <div class="reveal-item delay-300 p-7 bg-aurelia-charcoal border border-aurelia-border rounded flex flex-col justify-between">
         <p class="text-xs sm:text-sm text-gray-300 italic font-light leading-relaxed mb-6">
           « Très belle terrasse pour les soirées tardives. Musique bien dosée et salon VIP très agréable pour organiser un anniversaire. Je recommande vivement ! »
         </p>
@@ -557,7 +591,7 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
-        <div class="text-left">
+        <div class="reveal-item text-left">
           <span class="text-[10px] uppercase tracking-[0.35em] text-aurelia-gold font-medium mb-1 block">Notre Adresse</span>
           <h2 class="text-3xl sm:text-5xl font-serif text-white font-normal mb-6">Au Cœur de Rufisque</h2>
           
@@ -588,7 +622,7 @@
           </div>
         </div>
 
-        <div class="h-80 sm:h-96 w-full rounded overflow-hidden border border-white/10 shadow-2xl">
+        <div class="reveal-zoom delay-100 h-80 sm:h-96 w-full rounded overflow-hidden border border-white/10 shadow-2xl">
           <iframe 
             src="https://maps.google.com/maps?q=DaVinci%20Restaurant%20Lounge%20Bar%2C%20Rufisque&t=&z=15&ie=UTF8&iwloc=&output=embed" 
             width="100%" 
@@ -932,8 +966,29 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT MODALS & LOGIQUE INTERACTIVE -->
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT MODALS & MOTEUR SCROLL REVEAL (INTERSECTION OBSERVER) -->
+  <!-- ========================================================================= -->
   <script>
+    // Initialisation du Scroll Reveal élégant
+    document.addEventListener("DOMContentLoaded", () => {
+      const revealElements = document.querySelectorAll(".reveal-item, .reveal-zoom");
+
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal-active");
+            observer.unobserve(entry.target); // Animation déclenchée une seule fois avec fluidité
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: "0px 0px -40px 0px"
+      });
+
+      revealElements.forEach(el => revealObserver.observe(el));
+    });
+
     function openMenuModal(tabToOpen = 'plats') {
       closeAllModals();
       const modal = document.getElementById('menu-modal');
